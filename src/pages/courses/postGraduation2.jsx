@@ -5,8 +5,6 @@ import toast from "react-hot-toast";
 import { Rocket, Brain, Check, RefreshCw, BarChart3, BookOpen, Users, Briefcase, Award, Send, PhoneCall, CheckCircle, Wallet, User, GraduationCap, Trophy, HelpCircle, Clipboard, ChevronDown, ChevronUp, Phone, List, ArrowRight, MessageCircle, BookText, FileText, Smile, FileSignature, ClipboardCheck, BadgeCheck, BookOpenCheck, Landmark, Users2, FilePen, Volume2, Languages, ClipboardList } from 'lucide-react';
 
 
-
-
 // Adjust paths based on your project structure
 import Scholarship from "@/components/Scholarship";
 import PlacementOverview from "@/components/PlacementOverview";
@@ -22,14 +20,15 @@ import YourJourneySection from "@/components/YourJourneySection";
 import AboutUsSection from "@/components/AboutUsSection";
 import FacultySection from "@/components/FacultySection";
 import WhoShouldJoin from "@/components/WhoShouldJoin";
-import BookSection from '@/components/BookSection'
+import BookSection from '@/components/BookSection';
+import LeadForm from "@/components/LeadForm";
 
 const PostGraduation2 = () => {
 
   const stats = [
       { title: "95%", label: "Job Placement Rate" },
-      { title: "$0", label: "Upfront Payment" },
-      { title: "6 Months", label: "Average Program" },
+      { title: "₹ 0", label: "Upfront Payment" },
+      { title: "12 Months", label: "Average Program" },
     ];
   
     const progressBars = [
@@ -197,7 +196,7 @@ const PostGraduation2 = () => {
 
   return (
     <div>
-      <section className="relative bg-gradient-to-br from-blue-900 to-indigo-900 text-white overflow-hidden">
+      <section className="relative bg-[linear-gradient(135deg,#7b25d1,#ff2626,#910000)] text-white overflow-hidden">
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -211,11 +210,11 @@ const PostGraduation2 = () => {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-                  Learn Data,
+                <h1 className="text-5xl lg:text-5xl font-black leading-tight">
+                 Post Graduation Program in 
                 </h1>
                 <div className="text-3xl lg:text-4xl font-bold text-yellow-300 typewriter">
-                  with our Study Now Pay Later Program
+                  Applied Data Science
                 </div>
               </div>
 
@@ -239,11 +238,18 @@ const PostGraduation2 = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all hover-lift pulse-glow">
-                  Start Learning Free Today
+                <button 
+                 onClick={() => {
+                  const formElement = document.getElementById("contact-form");
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: "smooth" });
+                  }
+                }} 
+                 className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all hover-lift pulse-glow">
+                  Apply Now
                 </button>
                 <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all hover-lift">
-                  View Course Catalog
+                  Download Brochure
                 </button>
               </div>
 
@@ -338,7 +344,7 @@ const PostGraduation2 = () => {
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            About the CBA Program
+            About the Applied Data Science Program
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -431,35 +437,20 @@ const PostGraduation2 = () => {
        
       <FacultySection></FacultySection>
 
+
+
       <YourJourneySection></YourJourneySection>
 
-      <CoursePriceSection></CoursePriceSection>
+      <LeadForm></LeadForm>
+
+      
 
       <Scholarship></Scholarship>
 
 
       <BookSection></BookSection>
 
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
-        <div className="container mx-auto px-6 text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Your success is our goal — from day one to your job placement.
-          </h2>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 animate-pulse-slow flex items-center justify-center gap-2">
-              <Send className="w-6 h-6" />
-              Enroll Now
-              <ArrowRight className="w-6 h-6" />
-            </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-              <PhoneCall className="w-6 h-6" />
-              Talk to Career Expert
-            </button>
-          </div>
-        </div>
-      </section>
-
+      
       
 
       <section className="py-20 bg-white">
@@ -548,6 +539,14 @@ const PostGraduation2 = () => {
         </div>
       </section>
 
+      
+
+      
+
+      <Scholarship />
+      
+      <CoursePriceSection />
+
       <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
         <div className="container mx-auto px-6 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
@@ -555,9 +554,16 @@ const PostGraduation2 = () => {
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 animate-pulse-slow flex items-center justify-center gap-2">
+            <button
+             onClick={() => {
+                  const formElement = document.getElementById("contact-form");
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: "smooth" });
+                  }
+                }} 
+            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 animate-pulse-slow flex items-center justify-center gap-2">
               <Send className="w-6 h-6" />
-              Enroll Now
+              Apply Now
               <ArrowRight className="w-6 h-6" />
             </button>
             <button className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
@@ -567,12 +573,6 @@ const PostGraduation2 = () => {
           </div>
         </div>
       </section>
-
-      
-
-      <Scholarship />
-      
-      <CoursePriceSection />
 
     </div>
   );

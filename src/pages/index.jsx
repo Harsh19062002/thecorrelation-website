@@ -23,7 +23,9 @@ import CourseSlidder from '@/components/CourseSlidder';
 import StepsSection from '@/components/StepsSection';
 import WhoShouldJoin from '@/components/WhoShouldJoin';
 import WhichCourseIsBetter from '@/components/WhichCourseIsBetter';
-import HomeHero from '@/components/HomeHero'; // Update this path based on your structure
+import HomeHero from '@/components/HomeHero';
+import YourJourneySection from '@/components/YourJourneySection';
+import LeadForm from '@/components/LeadForm'; // Update this path based on your structure
 
 const Home = () => {
 
@@ -43,8 +45,10 @@ const Home = () => {
 
       <WhichCourseIsBetter></WhichCourseIsBetter>
 
+      <LeadForm></LeadForm>
 
-      <StepsSection></StepsSection>
+       <YourJourneySection/>
+      
 
       {/* Faculty Section */}
       <FacultySection />
@@ -60,6 +64,9 @@ const Home = () => {
       
       {/* Logic Box Section */}
       <LogicBoxSection />
+
+
+      
 
       
     </div>

@@ -1,4 +1,4 @@
-'use client'; // Only needed if you're using animations or client-side interactivity in App Router
+'use client'; 
 
 import React from 'react';
 import { Phone, BookCheck, Clock } from 'lucide-react';

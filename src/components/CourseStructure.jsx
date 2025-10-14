@@ -718,36 +718,43 @@ const CourseCurriculum = () => {
             {/* Content */}
             <div className="relative z-10">
               <div className="flex items-start justify-between mb-4 sm:mb-6">
-                <div className="p-2 sm:p-3 lg:p-4 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
-                    {module.icon}
+                {/* Icon, Title, and Description in one line */}
+                <div className="flex items-center gap-3 sm:gap-2 flex-1">
+                  <div className="p-2 sm:p-3 lg:p-4 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex-shrink-0 flex items-center justify-center">
+                    <div className="w-6 h-6 sm:w-9 sm:h-8 lg:w-8 lg:h-8 flex items-center justify-center">
+                      {module.icon}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-bold text-lg sm:text-xl lg:text-2xl leading-tight mb-1">
+                      {module.title}
+                    </h3>
+                    <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                      {module.description}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3">
+
+                {/* Duration and Chevron */}
+                <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ml-4">
                   <span className="px-2 sm:px-3 py-1 bg-white/20 rounded-full text-xs sm:text-sm font-medium text-white">
                     {module.duration}
                   </span>
                   <div
                     className={`
-                    p-1.5 sm:p-2 bg-white/20 backdrop-blur-sm rounded-full transition-transform duration-300
-                    ${isExpanded ? "rotate-180" : "hover:rotate-90"}
-                  `}
+        p-1.5 sm:p-2 bg-white/20 backdrop-blur-sm rounded-full transition-transform duration-300
+        ${isExpanded ? "rotate-180" : "hover:rotate-90"}
+      `}
                   >
                     <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                 </div>
               </div>
 
-              <h3 className="text-white font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 leading-tight">
-                {module.title}
-              </h3>
-
-              <p className="text-white/90 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
-                {module.description}
-              </p>
-
-              <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm">
-                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+              {/* Topics info moved to bottom */}
+              <div className="flex mx-20 items-center gap-2 text-white/80 text-xs sm:text-sm">
+                <BookOpen className=" w-3 h-3 sm:w-4 sm:h-4" />
                 <span>{module.topics?.length || 0} Topics</span>
               </div>
             </div>
@@ -768,7 +775,7 @@ const CourseCurriculum = () => {
                 </h4>
               </div>
 
-              <div className="grid gap-3 sm:gap-4">
+              <div className="grid  gap-2 sm:gap-4">
                 {module.topics?.map((topic, topicIndex) => (
                   <div
                     key={topicIndex}
@@ -947,7 +954,7 @@ const CourseCurriculum = () => {
             </div>
 
             {/* Mobile Navigation - Horizontal Scroll */}
-            <div className="lg:hidden">
+            <div className="lg:hidden  gap-2 mt-2">
               <div className="flex bg-gray-100 rounded-xl p-1 overflow-x-auto scrollbar-hide">
                 <button
                   onClick={() => setActiveSection("prerequisites")}
@@ -1095,6 +1102,15 @@ const CourseCurriculum = () => {
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
                 Certification
+              </p>
+            </div>
+            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0" />
+            <div className="text-center flex-shrink-0">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+                🎓
+              </div>
+              <p className="text-gray-600 font-medium text-xs sm:text-sm">
+                Paid Internship
               </p>
             </div>
           </div>

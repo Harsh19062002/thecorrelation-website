@@ -2,12 +2,40 @@
 
 import React from 'react'
 import { useEffect } from 'react';
-import { Users, Star, Building, BarChart3, Brain, TrendingUp, Database, Send, ArrowRight, PhoneCall, ChevronDown, Rocket, BookOpen, Briefcase, Award, CheckCircle, Wallet, User, GraduationCap, Trophy, HelpCircle, Clipboard, ChevronUp, Phone, List, RefreshCw, } from 'lucide-react';
+import { Users, Star,Check, Building, BarChart3, Brain, TrendingUp, Database, Send, ArrowRight, PhoneCall, ChevronDown, Rocket, BookOpen, Briefcase, Award, CheckCircle, Wallet, User, GraduationCap, Trophy, HelpCircle, Clipboard, ChevronUp, Phone, List, RefreshCw, } from 'lucide-react';
 
 
 import CDSPstructure from '@/components/CDSPstructure';
+import WhoShouldJoin from "@/components/WhoShouldJoin";
+import Tools from "@/components/Tools";
+import CourseStructure from "@/components/CourseStructure";
+import SoftSkillSection from "@/components/SoftSkillSection";
+import LogicBoxSection from "@/components/LogicBoxSection";
+import CertificateSection from "@/components/CertificateSection";
+import SuccessStoriesSection from "@/components/SuccessStoriesSection";
+import FacultySection from "@/components/FacultySection";
+import YourJourneySection from "@/components/YourJourneySection";
+import Scholarship from "@/components/Scholarship";
+import BookSection from "@/components/BookSection";
+import LeadForm from '@/components/LeadForm';
+
 
 const CharteredDataScience = () => {
+
+  const stats = [
+      { title: "95%", label: "Job Placement Rate" },
+      { title: "₹ 0", label: "Upfront Payment" },
+      { title: "10 Months", label: "Average Program" },
+    ];
+  
+    const progressBars = [
+      { course: "Python Fundamentals", percent: 85, color: "bg-blue-500" },
+      { course: "Machine Learning", percent: 60, color: "bg-purple-500" },
+      { course: "Data Visualization", percent: 40, color: "bg-yellow-500" },
+      { course: "Python Fundamentals", percent: 85, color: "bg-blue-500" },
+      { course: "Machine Learning", percent: 60, color: "bg-purple-500" },
+      { course: "Data Visualization", percent: 40, color: "bg-yellow-500" },
+    ];
 
     const highlights = [
         {
@@ -173,273 +201,433 @@ const CharteredDataScience = () => {
   ];
 
 
-
-
-
   return (
     <div>
-<section className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 text-white relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-300 rounded-full opacity-20 animate-bounce" />
-        <div className="absolute top-40 right-20 w-16 h-16 bg-white rounded-full opacity-10 animate-pulse" />
-        <div
-          className="absolute bottom-40 left-20 w-24 h-24 bg-purple-300 rounded-full opacity-15 animate-bounce"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute bottom-20 right-10 w-12 h-12 bg-indigo-300 rounded-full opacity-20 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
+      <section
+        className="relative bg-[linear-gradient(90deg,#cb0000,#fbd90d)]
+ text-white overflow-hidden"
+      >
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side */}
+            <div className="space-y-8">
+              <div className="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 backdrop-blur-sm">
+                <span className="text-yellow-300 mr-2">🚀</span>
+                <span className="text-sm text-gray-900 font-medium">
+                  Transform Your Career in Data Science
+                </span>
+              </div>
 
-        {/* Floating Icons */}
-        <div className="absolute top-32 left-1/4 opacity-20 animate-float">
-          <BarChart3 className="w-8 h-8" />
-        </div>
-        <div
-          className="absolute top-60 right-1/4 opacity-15 animate-float"
-          style={{ animationDelay: "1.5s" }}
-        >
-          <Brain className="w-10 h-10" />
-        </div>
-        <div
-          className="absolute bottom-60 left-1/3 opacity-20 animate-float"
-          style={{ animationDelay: "0.5s" }}
-        >
-          <TrendingUp className="w-6 h-6" />
-        </div>
-        <div
-          className="absolute bottom-32 right-1/3 opacity-15 animate-float"
-          style={{ animationDelay: "2.5s" }}
-        >
-          <Database className="w-8 h-8" />
-        </div>
-      </div>
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-5xl font-black leading-tight">
+                  Post Graduation Program in
+                </h1>
+                <div className="text-3xl lg:text-4xl font-bold text-yellow-300 typewriter">
+                  Chartered Data Science
+                </div>
+              </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-10" />
+              <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-2xl">
+                Master data science, machine learning, and analytics with zero
+                upfront costs. Start learning today, pay only when you land your
+                dream job.
+              </p>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Stats Banner */}
-          <div className="flex flex-wrap justify-center gap-8 mb-12 animate-fade-in">
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-              <div className="flex items-center gap-2 ">
-                <Users className="w-5 h-5 text-yellow-300" />
-                <span className="text-sm text-white font-medium ">5000+ Students Placed</span>
+              {/* Stats */}
+              <div className="flex flex-wrap gap-8 py-6">
+                {stats.map((item, idx) => (
+                  <div key={idx} className="text-center">
+                    <div className="text-3xl font-bold text-yellow-300">
+                      {item.title}
+                    </div>
+                    <div className="text-sm text-gray-300">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <button 
+                 onClick={() => {
+                  const formElement = document.getElementById("contact-form");
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: "smooth" });
+                  }
+                }} 
+                className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all hover-lift pulse-glow">
+                 Apply Now
+                </button>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all hover-lift">
+                  Download Brochure
+                </button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex items-center space-x-6 pt-8">
+                <div className="flex items-center space-x-2">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full border-2 border-white"></div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full border-2 border-white"></div>
+                    <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full border-2 border-white"></div>
+                  </div>
+                  <span className="text-sm text-gray-300">
+                    2,500+ students enrolled
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <span className="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                  <span className="text-sm text-gray-300">4.9/5 rating</span>
+                </div>
               </div>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-              <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-sm text-white font-medium">4.8/5 Rating</span>
+
+            {/* Right Visual */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl p-8 hover-lift space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-gray-800">
+                    {" "}
+                    Job Requirement{" "}
+                  </h3>
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+
+                {/* Progress Bars */}
+                {progressBars.map((bar, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between text-sm text-gray-600 mb-2">
+                      <span>{bar.course}</span>
+                      <span>{bar.percent}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        className={`${bar.color} h-2 rounded-full`}
+                        style={{ width: `${bar.percent}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Chart */}
+
+                {/* Payment Status */}
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-green-600">✅</span>
+                    <span className="text-green-800 font-medium">
+                      Study Now, Pay Later Active
+                    </span>
+                  </div>
+                  <p className="text-green-600 text-sm mt-1">
+                    No payments until you get hired!
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-              <div className="flex items-center gap-2">
-                <Building className="w-5 h-5 text-yellow-300" />
-                <span className="text-sm text-white font-medium">500+ Hiring Partners</span>
+
+              {/* Floating Visuals */}
+              <div className="absolute -top-6 -right-6 bg-yellow-400 rounded-full p-4 shadow-lg floating-animation">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-blue-500 rounded-full p-3 shadow-lg floating-animation">
+                <span className="text-white text-xl">📈</span>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in leading-tight">
-            Become a Certified Data Scientist with Our{" "}
-            <span className="text-yellow-300">Chartered Data Science Program!</span>
-          </h1>
+        {/* Bottom SVG Wave */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </section>
 
-          {/* Subheadline */}
-          <h2 className="text-xl md:text-2xl mb-8 animate-slide-up text-purple-100 font-medium">
-            Master the full stack of Data Analytics to AI in just 9 months...
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+            About the Chartered Data Science Program
           </h2>
 
-          {/* Key Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 animate-slide-up">
-            <span className="bg-green-500 bg-opacity-20 text-green-200 px-4 py-2 rounded-full text-sm font-medium border border-green-400 border-opacity-30">
-              ✓ 100% Job Guarantee
-            </span>
-            <span className="bg-blue-500 bg-opacity-20 text-blue-200 px-4 py-2 rounded-full text-sm font-medium border border-blue-400 border-opacity-30">
-              ✓ Live Projects
-            </span>
-            <span className="bg-purple-500 bg-opacity-20 text-purple-200 px-4 py-2 rounded-full text-sm font-medium border border-purple-400 border-opacity-30">
-              ✓ IIT Faculty
-            </span>
-            <span className="bg-yellow-500 bg-opacity-20 text-yellow-200 px-4 py-2 rounded-full text-sm font-medium border border-yellow-400 border-opacity-30">
-              ✓ Industry Certification
-            </span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              <p className="text-lg text-gray-600 mb-6">
+                The Chartered Business Analyst (CBA) certification is designed
+                to transform professionals into data-driven decision makers. Our
+                comprehensive curriculum combines theoretical knowledge with
+                practical application.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "Industry-Relevant Curriculum",
+                    desc: "Learn the latest tools and techniques used by top companies",
+                  },
+                  {
+                    title: "Expert Mentorship",
+                    desc: "Learn from faculty and industry experts from IIT, IIM, and ISI",
+                  },
+                  {
+                    title: "Hands-on Projects",
+                    desc: "Work on real-world projects with live datasets",
+                  },
+                  {
+                    title: "Career Support",
+                    desc: "Dedicated placement assistance and career guidance",
+                  },
+                ].map((item, idx) => (
+                  <div className="flex items-start gap-3" key={idx}>
+                    <Check className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Stats Card */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  12 Months
+                </div>
+                <p className="text-gray-600 mb-6">Comprehensive Program</p>
+
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  {[
+                    { label: "Hours of Learning", value: "200+" },
+                    { label: "Live Projects", value: "15+" },
+                    { label: "Tools & Techniques", value: "50+" },
+                    { label: "Placement Support", value: "100%" },
+                  ].map((card, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white p-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                    >
+                      <div className="text-2xl font-bold text-gray-900">
+                        {card.value}
+                      </div>
+                      <p className="text-sm text-gray-600">{card.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WhoShouldJoin></WhoShouldJoin>
+      
+            <Tools />
+      
+            <CDSPstructure></CDSPstructure>
+      
+            <SoftSkillSection></SoftSkillSection>
+      
+            <LogicBoxSection></LogicBoxSection>
+      
+            <CertificateSection></CertificateSection>
+      
+            <SuccessStoriesSection></SuccessStoriesSection>
+             
+            <FacultySection></FacultySection>
+      
+            <YourJourneySection></YourJourneySection>
+
+            <LeadForm></LeadForm>
+      
+            
+      
+            <Scholarship></Scholarship>
+      
+      
+            <BookSection></BookSection>
+              
+
+
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
+            Why Choose Our Program?
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {highlights.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+              >
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 ${item.bg}`}
+                >
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              Who Should Join?
+            </h2>
+            <p className="text-xl text-gray-600">
+              Perfect for ambitious individuals ready to transform their career
+            </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-purple-900 px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-3 hover-scale transition-all duration-300 pulse-animation shadow-2xl">
-              <Send className="w-5 h-5" />
-              Enroll Now
-              <ArrowRight className="w-5 h-5" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className={`text-center p-6 bg-gradient-to-br ${card.bg} rounded-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-xl`}
+              >
+                <div
+                  className={`${card.iconBg} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
+                >
+                  {card.icon}
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                  {card.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
+            Your Journey with Us
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={index}
+                  className={`bg-gradient-to-br from-${step.color}-50 to-${
+                    step.color
+                  }-100 rounded-xl shadow-lg p-8 card-hover border border-${
+                    step.color
+                  }-200 transform hover:-translate-y-2 transition-all duration-300 ${
+                    step.fullWidth ? "lg:col-span-3" : ""
+                  }`}
+                >
+                  <div
+                    className={`bg-${step.color}-500 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto`}
+                  >
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-center">
+                    <div
+                      className={`bg-${step.color}-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-4`}
+                    >
+                      {step.step}
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-gray-800">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600">{step.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Get answers to common questions
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl overflow-hidden shadow-sm transition-all"
+              >
+                <button className="faq-toggle w-full p-6 text-left flex items-center justify-between hover:bg-gray-100 transition-colors">
+                  <div className="flex items-center">
+                    {faq.icon}
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {faq.question}
+                    </h3>
+                  </div>
+                  <ChevronDown className="w-5 h-5 text-gray-500 faq-chevron transition-transform duration-300" />
+                </button>
+                <div className="faq-content hidden px-6 pb-6">
+                  <p className="text-gray-600 ml-10">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
+        <div className="container mx-auto px-6 text-center text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Your success is our goal — from day one to your job placement.
+          </h2>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
+            <button 
+             onClick={() => {
+                  const formElement = document.getElementById("contact-form");
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: "smooth" });
+                  }
+                }} 
+            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 animate-pulse-slow flex items-center justify-center gap-2">
+              <Send className="w-6 h-6" />
+             Apply Now
+              <ArrowRight className="w-6 h-6" />
             </button>
-            <button className="border-2 border-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-3 hover-scale transition-all duration-300 backdrop-blur-sm">
-              <PhoneCall className="w-5 h-5" />
+            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+              <PhoneCall className="w-6 h-6" />
               Talk to Career Expert
             </button>
           </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="flex flex-col items-center text-white opacity-60">
-              <span className="text-sm mb-2">Scroll to explore</span>
-              <ChevronDown className="w-6 h-6" />
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-
-
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
-          Why Choose Our Program?
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-            >
-              <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 ${item.bg}`}
-              >
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-800">{item.title}</h3>
-              <p className="text-gray-600">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-
-    <CDSPstructure></CDSPstructure>
-       
-
-      <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Who Should Join?</h2>
-          <p className="text-xl text-gray-600">Perfect for ambitious individuals ready to transform their career</p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`text-center p-6 bg-gradient-to-br ${card.bg} rounded-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-xl`}
-            >
-              <div className={`${card.iconBg} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                {card.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">{card.title}</h3>
-              <p className="text-gray-600 text-sm">{card.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
-          Your Journey with Us
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={index}
-                className={`bg-gradient-to-br from-${step.color}-50 to-${step.color}-100 rounded-xl shadow-lg p-8 card-hover border border-${step.color}-200 transform hover:-translate-y-2 transition-all duration-300 ${
-                  step.fullWidth ? 'lg:col-span-3' : ''
-                }`}
-              >
-                <div
-                  className={`bg-${step.color}-500 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto`}
-                >
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-center">
-                  <div
-                    className={`bg-${step.color}-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-4`}
-                  >
-                    {step.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">{step.desc}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-
-     <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-600">Get answers to common questions</p>
-        </div>
-
-        <div className="max-w-4xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-gray-50 rounded-xl overflow-hidden shadow-sm transition-all">
-              <button className="faq-toggle w-full p-6 text-left flex items-center justify-between hover:bg-gray-100 transition-colors">
-                <div className="flex items-center">
-                  {faq.icon}
-                  <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                </div>
-                <ChevronDown className="w-5 h-5 text-gray-500 faq-chevron transition-transform duration-300" />
-              </button>
-              <div className="faq-content hidden px-6 pb-6">
-                <p className="text-gray-600 ml-10">{faq.answer}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-
-    <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
-          <div className="container mx-auto px-6 text-center text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              Your success is our goal — from day one to your job placement.
-            </h2>
-    
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 animate-pulse-slow flex items-center justify-center gap-2">
-                <Send className="w-6 h-6" />
-                Enroll Now
-                <ArrowRight className="w-6 h-6" />
-              </button>
-              <button className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-                <PhoneCall className="w-6 h-6" />
-                Talk to Career Expert
-              </button>
-            </div>
-          </div>
-        </section>
-
-
+      </section>
     </div>
-  )
+  );
 }
 
 export default CharteredDataScience

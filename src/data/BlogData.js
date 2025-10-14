@@ -202,7 +202,6 @@ const blogData = [
 ];
 
 
-
 export const categories = [
   'All',
   'Machine Learning',

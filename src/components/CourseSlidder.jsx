@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Clock,
   Eye,
-  MessageCircle,
 } from "lucide-react";
 
+// Course data with SEO-optimized content
 const courses = [
   {
     id: 1,
@@ -26,6 +27,8 @@ const courses = [
     ],
     tags: ["Job Guarantee", "Certification", "Live Projects"],
     image: "/Dummy.png",
+    link: "/courses/applied-data-science",
+    alt: "Post Graduate Program in Applied Data Science - 12 months course with job guarantee",
   },
   {
     id: 2,
@@ -40,6 +43,8 @@ const courses = [
     ],
     tags: ["Internship", "Career Growth", "Certification"],
     image: "/Dummy.png",
+    link: "/courses/data-analytics",
+    alt: "Certification Program in Data Analytics - 6 months with internship opportunity",
   },
   {
     id: 3,
@@ -54,6 +59,8 @@ const courses = [
     ],
     tags: ["Job Guarantee", "Advanced", "AI Focus"],
     image: "/Dummy.png",
+    link: "/courses/machine-learning",
+    alt: "Post Graduate Program in Machine Learning - Advanced 10 months AI course",
   },
   {
     id: 4,
@@ -68,6 +75,8 @@ const courses = [
     ],
     tags: ["Chartered", "Premium", "Certification"],
     image: "/Dummy.png",
+    link: "/courses/chartered-data-science",
+    alt: "Chartered Data Science - Premium 18 months program with global recognition",
   },
   {
     id: 5,
@@ -82,6 +91,8 @@ const courses = [
     ],
     tags: ["Business Focus", "Strategy", "Leadership"],
     image: "/Dummy.png",
+    link: "/courses/chartered-business-analytics",
+    alt: "Chartered Business Analytics - 15 months strategic analytics program",
   },
   {
     id: 6,
@@ -96,6 +107,8 @@ const courses = [
     ],
     tags: ["AI", "Research", "Innovation"],
     image: "/Dummy.png",
+    link: "/courses/advanced-ai-ml",
+    alt: "Advanced AI & ML - 14 months cutting-edge artificial intelligence program",
   },
   {
     id: 7,
@@ -110,6 +123,8 @@ const courses = [
     ],
     tags: ["Fast Track", "Career Focus", "Job Ready"],
     image: "/Dummy.png",
+    link: "/courses/career-acceleration",
+    alt: "Career Acceleration Program - 4 months fast-track training with job placement",
   },
 ];
 
@@ -134,24 +149,32 @@ const tagColors = {
   "Live Projects": "bg-blue-100 text-blue-800",
 };
 
-const CourseCard = ({ course }) => (
- <div className="bg-black/20 backdrop-blur-lg rounded-xl p-6 mt-4 mb-4  transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col h-full min-h-[600px]">
-
+// Memoized CourseCard component for performance optimization
+const CourseCard = memo(({ course }) => (
+  <article 
+    className="bg-black/20 backdrop-blur-lg rounded-xl p-6 mt-4 mb-4 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col h-full min-h-[600px]"
+    itemScope
+    itemType="https://schema.org/Course"
+  >
     <div className="relative mb-4">
       <Image
         src={course.image}
-        alt={course.title}
+        alt={course.alt}
         width={320}
         height={192}
         className="w-full h-48 object-cover rounded-xl"
+        loading="lazy"
+        quality={85}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
-      <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+      <div className="absolute top-3 left-3 flex flex-wrap gap-1" role="list" aria-label="Course tags">
         {course.tags.slice(0, 2).map((tag, i) => (
           <span
             key={i}
             className={`px-2 py-1 rounded-full text-xs font-medium ${
               tagColors[tag] || "bg-gray-100 text-gray-800"
             }`}
+            role="listitem"
           >
             {tag}
           </span>
@@ -160,24 +183,24 @@ const CourseCard = ({ course }) => (
     </div>
     
     <div className="mb-4 flex-grow">
-      <h3 className="text-2xl font-semibold text-white mb-2">
+      <h3 className="text-2xl font-semibold text-white mb-2" itemProp="name">
         {course.title}
       </h3>
-      <p className="text-white text-sm leading-relaxed mb-3">
+      <p className="text-white text-sm leading-relaxed mb-3" itemProp="description">
         {course.description}
       </p>
       <div className="flex items-center text-white text-sm mb-4">
-        <Clock className="w-4 h-4" />
-        <span className="ml-2">{course.duration}</span>
+        <Clock className="w-4 h-4" aria-hidden="true" />
+        <span className="ml-2" itemProp="timeRequired">{course.duration}</span>
       </div>
       <div className="mb-4">
         <h4 className="text-sm font-semibold text-white mb-2">
           Key Highlights:
         </h4>
-        <ul className="grid grid-cols-2 gap-1 text-xs text-white">
+        <ul className="grid grid-cols-2 gap-1 text-xs text-white" itemProp="coursePrerequisites">
           {course.highlights.map((h, i) => (
             <li key={i} className="flex items-center">
-              <span className="w-1.5 h-1.5 bg-white rounded-full mr-2"></span>
+              <span className="w-1.5 h-1.5 bg-white rounded-full mr-2" aria-hidden="true"></span>
               {h}
             </li>
           ))}
@@ -185,40 +208,54 @@ const CourseCard = ({ course }) => (
       </div>
     </div>
     
-    <div className="flex gap-28 mt-auto">
-      <button className="flex items-center gap-2 px-5 py-2 bg-white text-black border-2 border-white font-bold text-md rounded-full shadow-md transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
-        <Eye className="w-4 h-4" />
+    <div className="flex justify-center mt-auto">
+      <Link 
+        href={course.link}
+        className="flex items-center gap-2 px-6 py-2 bg-white text-black border-2 border-white font-bold text-md rounded-full shadow-md transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+        aria-label={`Explore ${course.title} course details`}
+        itemProp="url"
+      >
+        <Eye className="w-4 h-4" aria-hidden="true" />
         <span>Explore</span>
-        
-      </button>
-      
-      <button className="flex items-center gap-2 px-5 py-2 bg-white text-black border-2 border-white font-bold text-md rounded-full shadow-md transition-all duration-300 ease-in-out hover:scale-105 active:scale-95">
-        <MessageCircle className="w-4 h-4" />
-        <span>Enroll</span>
-        
-      </button>
+      </Link>
     </div>
-  </div>
-);
+    
+    {/* Schema.org structured data */}
+    <meta itemProp="provider" content="Your Company Name" />
+    <meta itemProp="educationalLevel" content="Professional" />
+  </article>
+));
+
+CourseCard.displayName = 'CourseCard';
 
 const CourseSlider = () => {
   return (
-    <section className="py-16 bg-[linear-gradient(135deg,#7b25d1,#ff2626,#910000)] bg-yellow-50">
+    <section 
+      className="py-16 bg-[linear-gradient(135deg,#7b25d1,#ff2626,#910000)]"
+      aria-labelledby="courses-heading"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-center text-white mb-4">
+        <header className="text-center mb-12">
+          <h2 
+            id="courses-heading" 
+            className="text-3xl font-bold text-center text-white mb-4"
+          >
             Our Popular Courses
           </h2>
           <p className="text-lg text-white max-w-2xl mx-auto">
             Transform your career with industry-leading programs designed by
             experts and trusted by professionals worldwide.
           </p>
-        </div>
+        </header>
 
         <Swiper
           modules={[Autoplay]}
           spaceBetween={20}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          autoplay={{ 
+            delay: 2500, 
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true 
+          }}
           loop={true}
           breakpoints={{
             320: { slidesPerView: 1 },
@@ -226,18 +263,17 @@ const CourseSlider = () => {
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
+          aria-label="Course carousel"
         >
-          {courses.map((course, index) => (
-            <SwiperSlide key={index} className="h-auto">
+          {courses.map((course) => (
+            <SwiperSlide key={course.id} className="h-auto">
               <CourseCard course={course} />
             </SwiperSlide>
           ))}
         </Swiper>
-
-        
       </div>
     </section>
   );
 };
 
-export default CourseSlider;
+export default memo(CourseSlider);

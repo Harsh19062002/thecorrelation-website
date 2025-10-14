@@ -1,79 +1,85 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Typewriter } from 'react-simple-typewriter';
-import { motion, LazyMotion, domAnimation, m } from 'framer-motion';
-import { memo, useMemo } from 'react';
+import Image from "next/image";
+import { Typewriter } from "react-simple-typewriter";
+import { motion, LazyMotion, domAnimation, m } from "framer-motion";
+import { memo, useMemo } from "react";
 
 // Memoized hexagon data to prevent recreation on each render
 const hexagonPositions = [
-  { id: 'hex1', top: '-25%', left: '50%' },
-  
-  { id: 'hex8', top: '33%', left: '72%' },
+  { id: "hex1", top: "-25%", left: "50%" },
+  { id: "hex8", top: "33%", left: "72%" },
 ];
 
 // Memoized card data for better performance
 const featureCards = [
   {
-    title: 'Real Industry Projects',
-    text: 'Work on capstone projects that mimic real-world data problems and business use-cases.',
+    title: "Real Industry Projects",
+    text: "Work on capstone projects that mimic real-world data problems and business use-cases.",
     schema: {
       "@type": "Service",
-      "name": "Real Industry Projects",
-      "description": "Work on capstone projects that mimic real-world data problems and business use-cases."
-    }
+      name: "Real Industry Projects",
+      description:
+        "Work on capstone projects that mimic real-world data problems and business use-cases.",
+    },
   },
   {
-    title: 'Job-Ready Curriculum',
-    text: 'Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub.',
-    schema: {
-      "@type": "Service", 
-      "name": "Job-Ready Data Science Curriculum",
-      "description": "Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub."
-    }
-  },
-  {
-    title: 'Expert Mentorship',
-    text: 'Get 1:1 guidance from industry experts and build a strong portfolio that stands out.',
+    title: "Job-Ready Curriculum",
+    text: "Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub.",
     schema: {
       "@type": "Service",
-      "name": "Expert Data Science Mentorship", 
-      "description": "Get 1:1 guidance from industry experts and build a strong portfolio that stands out."
-    }
+      name: "Job-Ready Data Science Curriculum",
+      description:
+        "Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub.",
+    },
+  },
+  {
+    title: "Expert Mentorship",
+    text: "Get 1:1 guidance from industry experts and build a strong portfolio that stands out.",
+    schema: {
+      "@type": "Service",
+      name: "Expert Data Science Mentorship",
+      description:
+        "Get 1:1 guidance from industry experts and build a strong portfolio that stands out.",
+    },
   },
 ];
 
 // Optimized typewriter words for SEO
 const typewriterWords = [
-  'Data Science',
-  'Machine Learning',
-  'Artificial Intelligence',
-  'Data Analytics',
-  'Data Visualization',
+  "Data Science",
+  "Machine Learning",
+  "Artificial Intelligence",
+  "Data Analytics",
+  "Data Visualization",
 ];
 
 // Memoized Hexagon component for better performance
 const HexagonBackground = memo(() => {
   return (
-    <div className="absolute inset-0 z-10" role="presentation" aria-hidden="true">       
-  {hexagonPositions.slice(0, 2).map(({ id, top, left }, index) => (         
-    <Image                
-      key={id}                
-      src="/Hexagon1.png"                
-      alt={`Decorative hexagon ${index + 1}`}                
-      width={600}                
-      height={600}                
-      priority={true} // Both hexagons get priority since there are only 2              
-      className={`absolute w-[600px] h-[600px] transition-transform duration-300 ease-in-out hover:scale-105`}                
-      style={{ top, left }}                
-      loading="eager"            
-    />       
-  ))}     
-</div>
+    <div
+      className="absolute inset-0 z-10"
+      role="presentation"
+      aria-hidden="true"
+    >
+      {hexagonPositions.slice(0, 2).map(({ id, top, left }, index) => (
+        <Image
+          key={id}
+          src="/Hexagon1.png"
+          alt={`Decorative hexagon ${index + 1}`}
+          width={600}
+          height={600}
+          priority={true}
+          className={`absolute w-[600px] h-[600px] transition-transform  duration-300 ease-in-out hover:scale-105`}
+          style={{ top, left }}
+          loading="eager"
+        />
+      ))}
+    </div>
   );
 });
 
-HexagonBackground.displayName = 'HexagonBackground';
+HexagonBackground.displayName = "HexagonBackground";
 
 // Memoized Feature Cards component
 const FeatureCards = memo(() => {
@@ -86,16 +92,10 @@ const FeatureCards = memo(() => {
           itemScope
           itemType="https://schema.org/Service"
         >
-          <h3 
-            className="text-xl font-semibold text-white mb-2"
-            itemProp="name"
-          >
+          <h3 className="text-xl font-semibold text-white mb-2" itemProp="name">
             {card.title}
           </h3>
-          <p 
-            className="text-white text-sm"
-            itemProp="description"
-          >
+          <p className="text-white text-sm" itemProp="description">
             {card.text}
           </p>
         </article>
@@ -104,43 +104,52 @@ const FeatureCards = memo(() => {
   );
 });
 
-FeatureCards.displayName = 'FeatureCards';
+FeatureCards.displayName = "FeatureCards";
 
 const HomeHero = () => {
   // Memoize structured data to prevent recreation
-  const structuredData = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "TheCorrelation",
-    "description": "Leading Data Science and AI education platform offering industry-relevant courses and certifications",
-    "url": typeof window !== 'undefined' ? window.location.origin : '',
-    "logo": typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : '',
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Education Enquiry",
-      "description": "Enquire about Data Science courses"
-    },
-    "offers": {
-      "@type": "AggregateOffer",
-      "description": "Data Science and AI courses with industry mentorship",
-      "category": "Education"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Data Science Courses",
-      "itemListElement": featureCards.map(card => card.schema)
-    }
-  }), []);
+  const structuredData = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "TheCorrelation",
+      description:
+        "Leading Data Science and AI education platform offering industry-relevant courses and certifications",
+      url: typeof window !== "undefined" ? window.location.origin : "",
+      logo:
+        typeof window !== "undefined"
+          ? `${window.location.origin}/logo.png`
+          : "",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "Education Enquiry",
+        description: "Enquire about Data Science courses",
+      },
+      offers: {
+        "@type": "AggregateOffer",
+        description: "Data Science and AI courses with industry mentorship",
+        category: "Education",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Data Science Courses",
+        itemListElement: featureCards.map((card) => card.schema),
+      },
+    }),
+    []
+  );
 
   const handleEnquireClick = () => {
-    // Add your enquiry logic here
-    console.log('Enquire button clicked');
+    const formElement = document.getElementById("contact-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <LazyMotion features={domAnimation}>
       <section
-        className="relative w-full min-h-screen overflow-hidden px-6 py-16 flex flex-col justify-center bg-[linear-gradient(135deg,#7b25d1,#ff2626,#910000)]"
+        className="relative w-full min-h-screen overflow-hidden px-6 py-16 flex flex-col justify-center"
         aria-label="Hero section promoting Data Science education at TheCorrelation"
         role="banner"
         itemScope
@@ -151,6 +160,25 @@ const HomeHero = () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+
+        {/* Background Image with Blur Overlay */}
+        <div className="absolute inset-0 z-0">
+  <Image
+    src="/HomeHero.jpg"
+    alt="Data Science background"
+    fill
+    priority
+    className="object-cover"
+    quality={90}
+    sizes="90vw"
+  />
+
+  {/* Left blur gradient overlay */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent "></div>
+  </div>
+</div>
+
 
         {/* Optimized Hexagon Background */}
         <HexagonBackground />
@@ -164,10 +192,10 @@ const HomeHero = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="w-full flex justify-center items-center px-4">
-            <h1 className="text-xl md:text-4xl lg:text-4xl font-bold leading-tight text-white flex items-center text-center gap-2">
+          <div className="w-full flex justify-start lg:mx-34 items-center">
+            <h1 className="text-xl md:text-4xl lg:text-4xl font-bold leading-tight text-white flex gap-2 drop-shadow-lg">
               <span className="whitespace-nowrap">Become the Future of</span>
-              <span className="text-orange-400 whitespace-nowrap">
+              <span className="text-orange-400 whitespace-nowrap min-w-[200px] text-left">
                 <Typewriter
                   words={typewriterWords}
                   loop={0}
@@ -182,13 +210,13 @@ const HomeHero = () => {
           </div>
 
           <p
-            className="text-md md:text-lg font-light max-w-2xl text-white"
+            className="text-md md:text-lg lg:pl-32 font-light text-white drop-shadow-lg"
             itemProp="description"
           >
-            Welcome to <strong itemProp="legalName">TheCorrelation</strong>,
-            where AI sparks technological revolutions. Explore cutting-edge
-            research and development while earning top-tier certifications in
-            Data Science. "Aane wale Kal ka Safar" begins here.
+            Welcome to <strong itemProp="legalName">TheCorrelation</strong>, where AI
+            sparks technological revolutions. Explore cutting-edge research and
+            development while earning top-tier certifications in Data Science. "Aane
+            wale Kal ka Safar" begins here.
           </p>
         </m.div>
 
@@ -198,6 +226,7 @@ const HomeHero = () => {
 
           {/* SEO Optimized Enquire Button */}
           <button
+            onClick={handleEnquireClick}
             type="button"
             className="px-10 py-4 bg-white text-black font-bold text-lg rounded-full shadow-md transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
           >
@@ -210,255 +239,3 @@ const HomeHero = () => {
 };
 
 export default HomeHero;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,14 +9,25 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
   const pathname = usePathname();
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [iconSpin, setIconSpin] = useState(false);
-  const dropdownRef = useRef(null);
+  const coursesDropdownRef = useRef(null);
+  const aboutDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        coursesDropdownRef.current &&
+        !coursesDropdownRef.current.contains(event.target)
+      ) {
         setCoursesDropdownOpen(false);
+      }
+      if (
+        aboutDropdownRef.current &&
+        !aboutDropdownRef.current.contains(event.target)
+      ) {
+        setAboutDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -27,6 +38,12 @@ const Navbar = () => {
 
   const toggleCoursesDropdown = () => {
     setCoursesDropdownOpen(!coursesDropdownOpen);
+    setAboutDropdownOpen(false);
+  };
+
+  const toggleAboutDropdown = () => {
+    setAboutDropdownOpen(!aboutDropdownOpen);
+    setCoursesDropdownOpen(false);
   };
 
   const toggleMobileMenu = () => {
@@ -41,16 +58,20 @@ const Navbar = () => {
   const hoverStyle =
     "hover:text-white hover:shadow-lg hover:shadow-slate-500/20 transition-all duration-300";
 
-  const frontendLinks = [
+  const postGraduationLinks = [
     { label: "Post Graduation 1", path: "/courses/postGraduation1" },
     { label: "Post Graduation 2", path: "/courses/postGraduation2" },
-    { label: "Chartered Data Science", path: "/courses/CharteredDataScience" },
-    { label: "Chartered Bussiness Analytics", path: "/courses/CharteredBussinessAnalytics" },
-    
-    
   ];
 
-  const backendLinks = [
+  const charteredLinks = [
+    { label: "Chartered Data Science", path: "/courses/CharteredDataScience" },
+    {
+      label: "Chartered Business Analytics",
+      path: "/courses/CharteredBusinessAnalytics",
+    },
+  ];
+
+  const certificationLinks = [
     { label: "Applied Data Science", path: "/courses/appliedDataScience" },
     { label: "Machine Learning", path: "/courses/machineLearning" },
     { label: "Applied Science", path: "/courses/appliedScience" },
@@ -61,8 +82,15 @@ const Navbar = () => {
     { label: "Advanced Artificial Intelligence", path: "/courses/advancedAI" },
   ];
 
-  const devopsLinks = [
+  const careerLinks = [
     { label: "Career Acceleration", path: "/courses/careerAcceleration" },
+  ];
+
+  const aboutLinks = [
+    { label: "About Us", path: "/about-us" },
+    { label: "About Director", path: "/about-us" },
+    { label: "Projects", path: "/projects" },
+    { label: "Contact Us", path: "/contact" },
   ];
 
   const dropdownVariants = {
@@ -86,7 +114,7 @@ const Navbar = () => {
     }),
   };
 
-  const navItems = ["Home", "Courses", "Blog", "Career", "Contact"];
+  const navItems = ["Home", "Courses", "Blog", "Career", "About Us"];
 
   return (
     <motion.div
@@ -103,13 +131,16 @@ const Navbar = () => {
           transition={{ delay: 0.2 }}
           className="navbar-start pl-0"
         >
-        <Link href="/" className="absolute top-7 left-6 z-30 hover:opacity-80 transition-opacity">
-  <img
-    src="/logo1.svg"
-    alt="The Correlation"
-    className="h-5 w-auto"
-  />
-</Link>
+          <Link
+            href="/"
+            className="absolute top-7 left-6 z-30 hover:opacity-80 transition-opacity"
+          >
+            <img
+              src="/logo1.svg"
+              alt="The Correlation"
+              className="h-5 w-auto"
+            />
+          </Link>
         </motion.div>
 
         {/* Desktop Nav */}
@@ -121,7 +152,7 @@ const Navbar = () => {
                   <motion.li
                     key="courses"
                     className="relative"
-                    ref={dropdownRef}
+                    ref={coursesDropdownRef}
                     variants={navItemVariants}
                     initial="hidden"
                     animate="visible"
@@ -146,38 +177,229 @@ const Navbar = () => {
                           exit="exit"
                           variants={dropdownVariants}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 bg-white/10 backdrop-blur-md rounded shadow-lg p-4 flex space-x-8 text-white z-50 min-w-[40rem] max-w-[60rem] border border-white/20"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-black/50 backdrop-blur-lg rounded shadow-lg p-6 grid grid-cols-4 gap-6 text-white z-50 min-w-[55rem] border border-white/20"
                         >
-                          {[ 
-                            { title: "Post Graduation Program", links: frontendLinks },
-                            { title: "Certification courses", links: backendLinks },
-                            { title: "Career", links: devopsLinks },
-                          ].map(({ title, links }) => (
-                            <div key={title}>
-                              <h3 className="font-bold mb-1">{title}</h3>
-                              <ul className="space-y-1">
-                                {links.map((item) => (
-                                  <motion.li
-                                    key={item.label}
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                  >
-                                    <Link
-                                      href={item.path}
-                                      className={`block py-1 ${
-                                        pathname === item.path
-                                          ? "text-white font-medium border-b border-white"
-                                          : "text-gray-300 hover:text-white"
-                                      } transition duration-300`}
-                                      onClick={() => setCoursesDropdownOpen(false)}
-                                    >
-                                      {item.label}
-                                    </Link>
-                                  </motion.li>
-                                ))}
-                              </ul>
+                          <div>
+                            <h3 className="font-bold text-white mb-1">
+                              Post Graduation Program
+                            </h3>
+                            <p className="text-gray-400 text-xs mb-2">
+                              New comprehensive programs
+                            </p>
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              <span className="text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">
+                                Online Mode
+                              </span>
+                              <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded">
+                                SNPL
+                              </span>
                             </div>
-                          ))}
+                            <ul className="space-y-1">
+                              {postGraduationLinks.map((item) => (
+                                <motion.li
+                                  key={item.label}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <Link
+                                    href={item.path}
+                                    onClick={() => {
+                                      setCoursesDropdownOpen(false);
+                                    }}
+                                    className={`block py-1 text-sm ${
+                                      pathname === item.path
+                                        ? "text-white font-medium border-b border-white"
+                                        : "text-gray-300 hover:text-white"
+                                    } transition duration-300`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h3 className="font-bold text-white mb-1">
+                              Chartered Programs
+                            </h3>
+                            <p className="text-gray-400 text-xs mb-2">
+                              Career transformation programs
+                            </p>
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">
+                                Hybrid
+                              </span>
+                              <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded">
+                                Premium
+                              </span>
+                            </div>
+                            <ul className="space-y-1">
+                              {charteredLinks.map((item) => (
+                                <motion.li
+                                  key={item.label}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <Link
+                                    href={item.path}
+                                    onClick={() => {
+                                      setCoursesDropdownOpen(false);
+                                    }}
+                                    className={`block py-1 text-sm ${
+                                      pathname === item.path
+                                        ? "text-white font-medium border-b border-white"
+                                        : "text-gray-300 hover:text-white"
+                                    } transition duration-300`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h3 className="font-bold text-white mb-1">
+                              Certification Programs
+                            </h3>
+                            <p className="text-gray-400 text-xs mb-2">
+                              Self-paced + Classroom
+                            </p>
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              <span className="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">
+                                Flexible
+                              </span>
+                              <span className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded">
+                                Industry-Ready
+                              </span>
+                            </div>
+                            <ul className="space-y-1">
+                              {certificationLinks.map((item) => (
+                                <motion.li
+                                  key={item.label}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <Link
+                                    href={item.path}
+                                    onClick={() => {
+                                      setCoursesDropdownOpen(false);
+                                    }}
+                                    className={`block py-1 text-sm ${
+                                      pathname === item.path
+                                        ? "text-white font-medium border-b border-white"
+                                        : "text-gray-300 hover:text-white"
+                                    } transition duration-300`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h3 className="font-bold text-white mb-1">
+                              Career Development
+                            </h3>
+                            <p className="text-gray-400 text-xs mb-2">
+                              Focused short-term programs
+                            </p>
+                            <div className="flex flex-wrap gap-1 mb-2">
+                              <span className="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded">
+                                Quick Start
+                              </span>
+                              <span className="text-xs bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded">
+                                Career Boost
+                              </span>
+                            </div>
+                            <ul className="space-y-1">
+                              {careerLinks.map((item) => (
+                                <motion.li
+                                  key={item.label}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <Link
+                                    href={item.path}
+                                    onClick={() => {
+                                      setCoursesDropdownOpen(false);
+                                    }}
+                                    className={`block py-1 text-sm ${
+                                      pathname === item.path
+                                        ? "text-white font-medium border-b border-white"
+                                        : "text-gray-300 hover:text-white"
+                                    } transition duration-300`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
+                );
+              }
+
+              if (item === "About Us") {
+                return (
+                  <motion.li
+                    key="about"
+                    className="relative"
+                    ref={aboutDropdownRef}
+                    variants={navItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    custom={index}
+                    onMouseEnter={() => setAboutDropdownOpen(true)}
+                    onMouseLeave={() => setAboutDropdownOpen(false)}
+                  >
+                    <button
+                      onClick={toggleAboutDropdown}
+                      className={`${hoverStyle} cursor-pointer py-1 ${
+                        aboutDropdownOpen ? activeStyle : ""
+                      }`}
+                    >
+                      About Us
+                    </button>
+
+                    <AnimatePresence>
+                      {aboutDropdownOpen && (
+                        <motion.div
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          variants={dropdownVariants}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 bg-black/50 backdrop-blur-lg rounded shadow-lg p-4 text-white z-50 min-w-[12rem] border border-white/20"
+                        >
+                          <ul className="space-y-1">
+                            {aboutLinks.map((item) => (
+                              <motion.li
+                                key={item.label}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <Link
+                                  href={item.path}
+                                  onClick={() => {
+                                    setAboutDropdownOpen(false);
+                                  }}
+                                  className={`block py-2 px-3 w-full text-left rounded ${
+                                    pathname === item.path
+                                      ? "text-white font-medium bg-white/10"
+                                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                                  } transition duration-300`}
+                                >
+                                  {item.label}
+                                </Link>
+                              </motion.li>
+                            ))}
+                          </ul>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -186,7 +408,13 @@ const Navbar = () => {
               }
 
               const itemPath =
-                item === "Home" ? "/" : `/${item.replace(/\s+/g, "").toLowerCase()}`;
+                item === "Home"
+                  ? "/"
+                  : item === "Blog"
+                  ? "/blog"
+                  : item === "Career"
+                  ? "/career"
+                  : `/${item.replace(/\s+/g, "").toLowerCase()}`;
 
               return (
                 <motion.li
@@ -198,7 +426,9 @@ const Navbar = () => {
                 >
                   <Link
                     href={itemPath}
-                    className={`${hoverStyle} ${isActive(itemPath) ? activeStyle : ""} py-1`}
+                    className={`${hoverStyle} ${
+                      isActive(itemPath) ? activeStyle : ""
+                    } py-1`}
                   >
                     {item}
                   </Link>
@@ -216,7 +446,9 @@ const Navbar = () => {
           transition={{ delay: 0.4 }}
         >
           <Link
-            href="/login"
+            href="https://studentportal.thecorrelation.co.in/login"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2 bg-white text-black border-2 border-white font-bold text-md rounded-full shadow-md transition-all duration-300 ease-in-out hover:scale-105 active:scale-95"
           >
             Student Login
@@ -255,7 +487,11 @@ const Navbar = () => {
               {navItems.map((item, index) => {
                 if (item === "Courses") {
                   return (
-                    <motion.div key="courses" variants={navItemVariants} custom={index}>
+                    <motion.div
+                      key="courses"
+                      variants={navItemVariants}
+                      custom={index}
+                    >
                       <button
                         onClick={toggleCoursesDropdown}
                         className={`block w-full text-left py-2 px-2 ${
@@ -273,37 +509,223 @@ const Navbar = () => {
                             animate="visible"
                             exit="exit"
                             variants={dropdownVariants}
+                            className="pl-4 mt-1 space-y-2 bg-white/10 backdrop-blur-md rounded-md px-3 py-2 border border-white/20 text-white"
+                          >
+                            <div className="mt-2">
+                              <h3 className="font-bold mb-1 text-sm">
+                                Post Graduation Program
+                              </h3>
+                              <p className="text-gray-400 text-xs mb-1">
+                                New comprehensive programs
+                              </p>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                <span className="text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">
+                                  Online Mode
+                                </span>
+                                <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded">
+                                  SNPL
+                                </span>
+                              </div>
+                              <ul className="space-y-1 pl-2">
+                                {postGraduationLinks.map((item) => (
+                                  <motion.li
+                                    key={item.label}
+                                    whileHover={{ scale: 1.02 }}
+                                  >
+                                    <Link
+                                      href={item.path}
+                                      onClick={() => {
+                                        setCoursesDropdownOpen(false);
+                                        setMobileMenuOpen(false);
+                                      }}
+                                      className={`block py-1 px-2 text-sm ${
+                                        pathname === item.path
+                                          ? "text-white font-medium"
+                                          : "text-gray-300"
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="mt-2">
+                              <h3 className="font-bold mb-1 text-sm">
+                                Chartered Programs
+                              </h3>
+                              <p className="text-gray-400 text-xs mb-1">
+                                Career transformation
+                              </p>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">
+                                  Hybrid
+                                </span>
+                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded">
+                                  Premium
+                                </span>
+                              </div>
+                              <ul className="space-y-1 pl-2">
+                                {charteredLinks.map((item) => (
+                                  <motion.li
+                                    key={item.label}
+                                    whileHover={{ scale: 1.02 }}
+                                  >
+                                    <Link
+                                      href={item.path}
+                                      onClick={() => {
+                                        setCoursesDropdownOpen(false);
+                                        setMobileMenuOpen(false);
+                                      }}
+                                      className={`block py-1 px-2 text-sm ${
+                                        pathname === item.path
+                                          ? "text-white font-medium"
+                                          : "text-gray-300"
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="mt-2">
+                              <h3 className="font-bold mb-1 text-sm">
+                                Certification Programs
+                              </h3>
+                              <p className="text-gray-400 text-xs mb-1">
+                                Self-paced + Classroom
+                              </p>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                <span className="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">
+                                  Flexible
+                                </span>
+                                <span className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded">
+                                  Industry-Ready
+                                </span>
+                              </div>
+                              <ul className="space-y-1 pl-2">
+                                {certificationLinks.map((item) => (
+                                  <motion.li
+                                    key={item.label}
+                                    whileHover={{ scale: 1.02 }}
+                                  >
+                                    <Link
+                                      href={item.path}
+                                      onClick={() => {
+                                        setCoursesDropdownOpen(false);
+                                        setMobileMenuOpen(false);
+                                      }}
+                                      className={`block py-1 px-2 text-sm ${
+                                        pathname === item.path
+                                          ? "text-white font-medium"
+                                          : "text-gray-300"
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="mt-2">
+                              <h3 className="font-bold mb-1 text-sm">
+                                Career Development
+                              </h3>
+                              <p className="text-gray-400 text-xs mb-1">
+                                Short-term programs
+                              </p>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded">
+                                  Quick Start
+                                </span>
+                                <span className="text-xs bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded">
+                                  Career Boost
+                                </span>
+                              </div>
+                              <ul className="space-y-1 pl-2">
+                                {careerLinks.map((item) => (
+                                  <motion.li
+                                    key={item.label}
+                                    whileHover={{ scale: 1.02 }}
+                                  >
+                                    <button
+                                      onClick={() => {
+                                        setPathname(item.path);
+                                        setCoursesDropdownOpen(false);
+                                        setMobileMenuOpen(false);
+                                      }}
+                                      className={`block py-1 px-2 text-sm ${
+                                        pathname === item.path
+                                          ? "text-white font-medium"
+                                          : "text-gray-300"
+                                      }`}
+                                    >
+                                      {item.label}
+                                    </button>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                }
+
+                if (item === "About Us") {
+                  return (
+                    <motion.div
+                      key="about"
+                      variants={navItemVariants}
+                      custom={index}
+                    >
+                      <button
+                        onClick={toggleAboutDropdown}
+                        className={`block w-full text-left py-2 px-2 ${
+                          aboutDropdownOpen
+                            ? "text-white font-medium border-l-2 border-white"
+                            : "text-gray-300"
+                        }`}
+                      >
+                        About Us
+                      </button>
+                      <AnimatePresence>
+                        {aboutDropdownOpen && (
+                          <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            variants={dropdownVariants}
                             className="pl-4 mt-1 space-y-1 bg-white/10 backdrop-blur-md rounded-md px-3 py-2 border border-white/20 text-white"
                           >
-                            {[ 
-                              { title: "Post Graduation Program", links: frontendLinks },
-                              { title: "Certification courses", links: backendLinks },
-                              { title: "Career", links: devopsLinks },
-                            ].map(({ title, links }) => (
-                              <div key={title} className="mt-2">
-                                <h3 className="font-bold mb-1 text-sm">{title}</h3>
-                                <ul className="space-y-1 pl-2">
-                                  {links.map((item) => (
-                                    <motion.li key={item.label} whileHover={{ scale: 1.02 }}>
-                                      <Link
-                                        href={item.path}
-                                        className={`block py-1 px-2 ${
-                                          pathname === item.path
-                                            ? "text-white font-medium"
-                                            : "text-gray-300"
-                                        }`}
-                                        onClick={() => {
-                                          setCoursesDropdownOpen(false);
-                                          setMobileMenuOpen(false);
-                                        }}
-                                      >
-                                        {item.label}
-                                      </Link>
-                                    </motion.li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
+                            <ul className="list-none">
+                              {aboutLinks.map((item) => (
+                                <motion.li
+                                  key={item.label}
+                                  whileHover={{ scale: 1.02 }}
+                                >
+                                  <Link
+                                    href={item.path}
+                                    onClick={() => {
+                                      setAboutDropdownOpen(false);
+                                      setMobileMenuOpen(false);
+                                    }}
+                                    className={`block py-2 px-2 w-full text-left rounded ${
+                                      pathname === item.path
+                                        ? "text-white font-medium bg-white/10"
+                                        : "text-gray-300"
+                                    }`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </ul>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -312,10 +734,20 @@ const Navbar = () => {
                 }
 
                 const itemPath =
-                  item === "Home" ? "/" : `/${item.replace(/\s+/g, "").toLowerCase()}`;
+                  item === "Home"
+                    ? "/"
+                    : item === "Blog"
+                    ? "/blog"
+                    : item === "Career"
+                    ? "/career"
+                    : `/${item.replace(/\s+/g, "").toLowerCase()}`;
 
                 return (
-                  <motion.div key={item} variants={navItemVariants} custom={index}>
+                  <motion.div
+                    key={item}
+                    variants={navItemVariants}
+                    custom={index}
+                  >
                     <Link
                       href={itemPath}
                       className={`block py-2 px-2 ${
@@ -334,10 +766,10 @@ const Navbar = () => {
               {/* Mobile Login */}
               <motion.div variants={navItemVariants} custom={6}>
                 <Link
-                  href="/login"
-                  className={`block w-full text-center px-4 py-2 rounded-md border border-white bg-transparent text-white transition duration-300
-                    hover:bg-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-400
-                    ${isActive("/login") ? "font-semibold border-white" : ""}`}
+                  href="https://studentportal.thecorrelation.co.in/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center px-4 py-2 rounded-md border border-white bg-transparent text-white transition duration-300 hover:bg-white hover:text-black"
                   onClick={toggleMobileMenu}
                 >
                   Student Login

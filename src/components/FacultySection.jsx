@@ -78,6 +78,13 @@ const FacultySection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Centered Button at Bottom */}
+        <div className="mt-12 flex justify-center">
+          <button className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition">
+            About Faculty
+          </button>
+        </div>
       </div>
     </section>
   );

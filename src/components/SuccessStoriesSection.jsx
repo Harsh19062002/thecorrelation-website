@@ -95,9 +95,6 @@ const SuccessStoriesSection = () => {
 
                 <p className="text-sm text-white mt-1 ml-42">@ {story.company}</p>
 
-
-
-
                 <p className="text-sm text-white mt-3 leading-relaxed text-justify">
                   {story.testimonial}
                 </p>
