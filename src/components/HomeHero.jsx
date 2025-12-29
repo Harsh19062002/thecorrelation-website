@@ -15,35 +15,37 @@ const hexagonPositions = [
 const featureCards = [
   {
     title: "Real Industry Projects",
-    text: "Work on capstone projects that mimic real-world data problems and business use-cases.",
+    text: "Build real-world AI and Data Science projects using Python, SQL, and ML tools. Get hands-on experience across data cleaning, modeling, and business insights.",
     schema: {
       "@type": "Service",
       name: "Real Industry Projects",
       description:
-        "Work on capstone projects that mimic real-world data problems and business use-cases.",
+        "Hands-on Data Science, Machine Learning, and AI projects built with industry guidance, giving learners real experience in solving business challenges through data-driven insights.",
     },
   },
   {
     title: "Job-Ready Curriculum",
-    text: "Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub.",
+    text: "Learn AI, Data Science, and GenAI with a practical, job-focused curriculum. Master Python, Power BI, ML models, NLP, and Deep Learning for a strong portfolio.",
     schema: {
       "@type": "Service",
       name: "Job-Ready Data Science Curriculum",
       description:
-        "Master Data Science from Python to ML algorithms with hands-on tools like Power BI & GitHub.",
+        "Comprehensive AI and Data Science training covering Python, ML models, and GenAI tools, designed to help learners meet current industry skill demands.",
     },
   },
   {
     title: "Expert Mentorship",
-    text: "Get 1:1 guidance from industry experts and build a strong portfolio that stands out.",
+    text: "Get mentorship from experienced Data Science and AI professionals. Receive 1:1 guidance, project reviews, and personalized career support.",
     schema: {
       "@type": "Service",
       name: "Expert Data Science Mentorship",
       description:
-        "Get 1:1 guidance from industry experts and build a strong portfolio that stands out.",
+        "Personalized mentorship from AI and Data Science experts who guide learners through projects, interviews, and professional growth to become career-ready.",
     },
   },
 ];
+
+
 
 // Optimized typewriter words for SEO
 const typewriterWords = [
@@ -88,14 +90,14 @@ const FeatureCards = memo(() => {
       {featureCards.map((card, index) => (
         <article
           key={card.title}
-          className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/30 shadow-lg transition-transform hover:scale-[1.02]"
+          className="bg-black/20 backdrop-blur-lg rounded-xl p-6 border border-white/30 shadow-lg transition-transform hover:scale-[1.02]"
           itemScope
           itemType="https://schema.org/Service"
         >
           <h3 className="text-xl font-semibold text-white mb-2" itemProp="name">
             {card.title}
           </h3>
-          <p className="text-white text-sm" itemProp="description">
+          <p className="text-white text-md " itemProp="description">
             {card.text}
           </p>
         </article>
@@ -193,31 +195,38 @@ const HomeHero = () => {
           viewport={{ once: true }}
         >
           <div className="w-full flex justify-start lg:mx-34 items-center">
-            <h1 className="text-xl md:text-4xl lg:text-4xl font-bold leading-tight text-white flex gap-2 drop-shadow-lg">
-              <span className="whitespace-nowrap">Become the Future of</span>
-              <span className="text-orange-400 whitespace-nowrap min-w-[200px] text-left">
-                <Typewriter
-                  words={typewriterWords}
-                  loop={0}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1500}
-                />
-              </span>
-            </h1>
+            <h1 className="text-xl md:text-4xl lg:text-4xl font-bold leading-tight text-white flex flex-wrap gap-2 drop-shadow-lg">
+  <span className="whitespace-nowrap">
+    Become the Future of
+  </span>
+
+  <span className="block sm:inline text-orange-400 whitespace-nowrap min-w-[200px] text-left">
+    <Typewriter
+      words={typewriterWords}
+      loop={0}
+      cursor
+      cursorStyle="|"
+      typeSpeed={70}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </span>
+</h1>
           </div>
 
           <p
-            className="text-md md:text-lg lg:pl-32 font-light text-white drop-shadow-lg"
-            itemProp="description"
-          >
-            Welcome to <strong itemProp="legalName">TheCorrelation</strong>, where AI
-            sparks technological revolutions. Explore cutting-edge research and
-            development while earning top-tier certifications in Data Science. "Aane
-            wale Kal ka Safar" begins here.
-          </p>
+  className="text-md md:text-lg lg:pl-32 font-light text-white drop-shadow-lg"
+  itemProp="description"
+>
+  Welcome to <strong itemProp="legalName">TheCorrelation</strong> — India’s leading hub for 
+  <strong> Data Science</strong>, <strong>AI</strong>, and <strong>Machine Learning</strong> education.  
+  Our hands-on programs, expert mentors, and globally recognized certifications prepare you to 
+  lead the future of technology.  
+  <br />
+  <br />
+  <strong>Begin your AI-powered journey with us today!</strong>
+</p>
+
         </m.div>
 
         {/* Bottom Cards + Button */}
@@ -233,6 +242,7 @@ const HomeHero = () => {
             ENQUIRE NOW
           </button>
         </div>
+        
       </section>
     </LazyMotion>
   );

@@ -14,10 +14,10 @@ import {
 // Course data with SEO-optimized content
 const courses = [
   {
-    id: 1,
-    title: "Post Graduate Program in Applied Data Science",
+    id: 2,
+    title: "Post Graduation Program",
     description:
-      "Master data science with hands‑on projects and industry mentorship",
+      "Gain in-depth expertise in data science with a curriculum covering Python, SQL, statistics, machine learning, and advanced analytics. Work on live projects, receive 1:1 mentorship, and prepare for top analytical roles with job assistance and industry exposure.",
     duration: "12 months",
     highlights: [
       "100+ Live Projects",
@@ -25,106 +25,129 @@ const courses = [
       "Industry Certification",
       "24/7 Support",
     ],
-    tags: ["Job Guarantee", "Certification", "Live Projects"],
-    image: "/Dummy.png",
-    link: "/courses/applied-data-science",
-    alt: "Post Graduate Program in Applied Data Science - 12 months course with job guarantee",
-  },
-  {
-    id: 2,
-    title: "Certification Program in Data Analytics",
-    description: "Learn analytics fundamentals with real‑world case studies",
-    duration: "6 months",
-    highlights: [
-      "50+ Case Studies",
-      "Industry Tools",
-      "Career Support",
-      "Doubt Sessions",
-    ],
-    tags: ["Internship", "Career Growth", "Certification"],
-    image: "/Dummy.png",
-    link: "/courses/data-analytics",
-    alt: "Certification Program in Data Analytics - 6 months with internship opportunity",
+    tags: ["PGP","Data Science"],
+    image: "/Post-Graduate-course.jpg",
+    link: "/courses/post-graduation-program",
+    alt: "Post Graduation Program - 12 months advanced data science course with job guarantee",
   },
   {
     id: 3,
-    title: "Post Graduate Program in Machine Learning",
-    description: "Deep dive into ML algorithms and AI applications",
-    duration: "10 months",
+    title: "Chartered Data Science",
+    description:
+      "A globally recognized chartered program for data professionals. Master advanced machine learning, deep learning, AI strategy, and data engineering through real-world projects, executive mentorship, and international certification.",
+    duration: "12 months",
     highlights: [
-      "Deep Learning",
-      "Neural Networks",
-      "AI Projects",
-      "Research Papers",
+      "Executive Training",
+      "Global Certification",
+      "Industry Connect",
+      "Premium Support",
     ],
-    tags: ["Job Guarantee", "Advanced", "AI Focus"],
-    image: "/Dummy.png",
-    link: "/courses/machine-learning",
-    alt: "Post Graduate Program in Machine Learning - Advanced 10 months AI course",
+    tags: ["Chartered","Data Science"],
+    image: "/Chartered-Data-course.jpg",
+    link: "/courses/chartered-data-science",
+    alt: "Chartered Data Science - 18 months international chartered data science program",
   },
   {
     id: 4,
-    title: "Chartered Data Science",
-    description: "Comprehensive program for data science mastery",
-    duration: "18 months",
+    title: "Chartered Business Analytics",
+    description:
+      "Build leadership and decision-making expertise with this chartered business analytics program. Learn from industry leaders, analyze real-world business problems, and master data-driven strategies for business growth.",
+    duration: "6 months",
     highlights: [
+      "C-Suite Mentorship",
+      "Strategic Thinking",
+      "Business Case Studies",
       "Executive Training",
-      "Industry Connect",
-      "Premium Support",
-      "Global Recognition",
     ],
-    tags: ["Chartered", "Premium", "Certification"],
-    image: "/Dummy.png",
-    link: "/courses/chartered-data-science",
-    alt: "Chartered Data Science - Premium 18 months program with global recognition",
+    tags: ["Chartered","Business Analytics"],
+    image: "/Chartered-Data-course.jpg",
+    link: "/courses/chartered-business-analytics", // ✅ FIXED
+    alt: "Chartered Business Analytics - 15 months advanced leadership program in analytics",
   },
   {
     id: 5,
-    title: "Chartered Business Analytics",
-    description: "Strategic analytics for business transformation",
-    duration: "15 months",
+    title: "Applied Data Analytics",
+    description:
+      "Learn to apply data science techniques to solve real-world business challenges. Build expertise in Python, statistics, machine learning, and data visualization through hands-on projects and mentorship.",
+    duration: "3 months",
     highlights: [
-      "Business Strategy",
-      "Leadership Skills",
-      "Case Studies",
-      "C‑Suite Mentoring",
+      "Practical Projects",
+      "Mentorship Sessions",
+      "Data Visualization",
+      "Machine Learning Tools",
     ],
-    tags: ["Business Focus", "Strategy", "Leadership"],
-    image: "/Dummy.png",
-    link: "/courses/chartered-business-analytics",
-    alt: "Chartered Business Analytics - 15 months strategic analytics program",
+    tags: ["Certification","Analytics",  ],
+    image: "/Applied-Data-Analytics-course.jpg",
+    link: "/courses/applied-data-analytics",
+    alt: "Applied Data Analytics - 10 months practical data science certification program",
   },
   {
     id: 6,
-    title: "Advanced AI & ML",
-    description: "Cutting‑edge artificial intelligence and machine learning",
-    duration: "14 months",
+    title: "Foundational Machine Learning",
+    description:
+      "Start your machine learning journey with supervised, unsupervised, and reinforcement learning fundamentals. Perfect for beginners looking to break into AI and ML roles.",
+    duration: "3 months",
     highlights: [
-      "Research Projects",
-      "AI Innovation",
-      "Publication Support",
-      "Tech Leadership",
+      "ML Fundamentals",
+      "Supervised & Unsupervised Learning",
+      "Python & Scikit-learn",
+      "Real-World Projects",
     ],
-    tags: ["AI", "Research", "Innovation"],
-    image: "/Dummy.png",
-    link: "/courses/advanced-ai-ml",
-    alt: "Advanced AI & ML - 14 months cutting-edge artificial intelligence program",
+    tags: ["Certification", "ML Basics", "Career Growth"],
+    image: "/Foundational-Machine-course.jpg",
+    link: "/courses/foundational-machine-learning",
+    alt: "Foundational Machine Learning - 8 months beginner-friendly ML course",
   },
   {
     id: 7,
-    title: "Career Acceleration Program",
-    description: "Fast‑track your data career with intensive training",
+    title: "Advanced Machine Learning",
+    description:
+      "Deepen your AI knowledge with reinforcement learning, NLP, and generative models. Designed for learners with prior ML experience to specialize in high-end AI applications and research.",
+    duration: "3 months",
+    highlights: [
+      "Reinforcement Learning",
+      "NLP & Transformers",
+      "AI Research",
+      "Advanced ML Projects",
+    ],
+    tags: ["Certification", "Advanced"],
+    image: "/Advance-Machine-course.jpg",
+    link: "/courses/advanced-machine-learning",
+    alt: "Advanced Machine Learning - 12 months research-driven AI specialization program",
+  },
+  {
+    id: 8,
+    title: "Deep Learning with Generative AI",
+    description:
+      "Master deep learning architectures like CNNs, RNNs, and Transformers while exploring Generative AI models such as GANs and diffusion models. Learn to create AI systems that innovate.",
     duration: "4 months",
     highlights: [
-      "Intensive Training",
-      "Job Placement",
-      "Resume Building",
-      "Interview Prep",
+      "Deep Neural Networks",
+      "Generative AI",
+      "Transformer Models",
+      "Hands-on Projects",
     ],
-    tags: ["Fast Track", "Career Focus", "Job Ready"],
-    image: "/Dummy.png",
+    tags: ["Certification", "Deep Learning"],
+    image: "/Deep-Learning-course.jpg",
+    link: "/courses/deep-learning-with-generative-ai",
+    alt: "Deep Learning with Generative AI - 10 months advanced AI and DL certification program",
+  },
+  {
+    id: 9,
+    title: "Career Acceleration",
+    description:
+      "Accelerate your career with focused data and AI learning, resume building, and interview preparation. Ideal for beginners and professionals aiming to quickly transition into the data domain.",
+    duration: "4 months",
+    highlights: [
+      "Intensive Bootcamp",
+      "Placement Training",
+      "Career Guidance",
+      "Resume Building",
+    ],
+    tags: ["Certification","Career Boost"],
+    image: "/Career-Acceleration-course.jpg",
     link: "/courses/career-acceleration",
-    alt: "Career Acceleration Program - 4 months fast-track training with job placement",
+    alt: "Career Acceleration - 4 months job-focused data career training",
   },
 ];
 
@@ -147,7 +170,20 @@ const tagColors = {
   "Career Focus": "bg-amber-100 text-amber-800",
   "Job Ready": "bg-green-100 text-green-800",
   "Live Projects": "bg-blue-100 text-blue-800",
+
+  // 🔹 Newly Added Tags
+  PGP: "bg-indigo-100 text-indigo-800",
+  "Career Boost": "bg-fuchsia-100 text-fuchsia-800",
+  Flexible: "bg-sky-100 text-sky-800",
+  "Data Science": "bg-violet-100 text-violet-800",
+  "Business Analytics": "bg-teal-100 text-teal-800",
 };
+
+
+
+
+
+
 
 // Memoized CourseCard component for performance optimization
 const CourseCard = memo(({ course }) => (
@@ -162,7 +198,7 @@ const CourseCard = memo(({ course }) => (
         alt={course.alt}
         width={320}
         height={192}
-        className="w-full h-48 object-cover rounded-xl"
+        className="w-full h-56 object-cover rounded-xl"
         loading="lazy"
         quality={85}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

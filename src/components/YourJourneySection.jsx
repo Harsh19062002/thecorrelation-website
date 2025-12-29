@@ -63,7 +63,8 @@ const YourJourneySection = () => {
   ];
 
   return (
-    <section id="steps-journey" className="relative">
+  <div className="overflow-x-hiddenc">
+     <section id="steps-journey" className="relative">
       {/* Header */}
       <div className="py-8 px-4 flex items-center justify-center">
         <h1 className="text-6xl font-bold text-center">Your Journey With Us</h1>
@@ -99,7 +100,9 @@ const YourJourneySection = () => {
                 <div className="text-white">
                   <h2 className="text-lg md:text-xl font-semibold mb-1">{step.title}</h2>
                   <h3 className="text-2xl md:text-3xl font-bold mb-3">{step.heading}</h3>
-                  <p className="text-base md:text-lg leading-relaxed opacity-90">{step.desc}</p>
+                  <p className="text-base md:text-lg leading-relaxed opacity-90">
+                    {step.desc}
+                  </p>
                 </div>
               </div>
             </div>
@@ -107,6 +110,8 @@ const YourJourneySection = () => {
         })}
       </div>
     </section>
+  </div>
+
   );
 };
 

@@ -1,26 +1,11 @@
 'use client';
-import React, { useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
 const Mail = dynamic(() => import('lucide-react').then(mod => mod.Mail), { ssr: false });
 
 export default function AdmissionPolicy() {
-  const sectionsRef = useRef([]);
-  const observerRef = useRef(null);
-
-  useEffect(() => {
-    const options = { root: null, threshold: 0.1 };
-    observerRef.current = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('opacity-100', 'translate-y-0');
-      });
-    }, options);
-
-    sectionsRef.current.forEach(section => section && observerRef.current.observe(section));
-    return () => observerRef.current?.disconnect();
-  }, []);
-
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -36,15 +21,14 @@ export default function AdmissionPolicy() {
     "inLanguage": "en-US"
   };
 
-  const Section = useCallback(({ id, title, index, children }) => (
+  const Section = ({ id, title, index, children }) => (
     <section
-      ref={el => (sectionsRef.current[index] = el)}
       id={id}
-      className="opacity-0 translate-y-4 transition-all duration-500 mb-10 border-l-4 border-indigo-600 pl-6"
+      className="mb-10 border-l-4 border-red-600 pl-6"
     >
       <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-3 flex items-center">
         <span
-          className="bg-indigo-600 text-white w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm font-bold"
+          className="bg-red-600 text-white w-8 h-8 flex items-center justify-center rounded-full mr-3 text-sm font-bold"
           aria-hidden="true"
         >
           {index + 1}
@@ -53,7 +37,7 @@ export default function AdmissionPolicy() {
       </h2>
       <div className="space-y-4 text-gray-700 leading-relaxed">{children}</div>
     </section>
-  ), []);
+  );
 
   return (
     <>
@@ -91,7 +75,7 @@ export default function AdmissionPolicy() {
         />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8 text-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4 sm:px-6 lg:px-8 text-gray-800">
         <div className="max-w-screen mx-auto">
           <article className="bg-white rounded-xl shadow-lg overflow-hidden">
             
@@ -108,13 +92,13 @@ export default function AdmissionPolicy() {
 
               <Section id="admission" title="Admissions Policy" index={0}>
                 <h3 className="text-xl sm:text-2xl font-medium text-gray-700 mt-4">Registration Fee</h3>
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-5">
+                <div className="bg-gray-200 text-black rounded-lg p-5">
                   <strong className="text-lg sm:text-xl">Registration Fee: INR 5,000</strong>
                 </div>
                 <p>The registration fee of INR 5,000 is your seat reservation fee paid for a particular program. This fee is non-refundable and will get adjusted against the final fee payable by the student.</p>
                 <p>The student will have to confirm his/her admission at least 2 days before the start of the session. To confirm your registration, you can either pay the full fee or make the first installment payment.</p>
-                <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-4">
-                  <strong>Important:</strong> If a student does not confirm admission before the deadline, their seat will be released, and the registration fee forfeited.
+                <div className="bg-red-50 border border-red-200 text-gray-900 rounded-lg p-4">
+                  <strong className="text-red-600">Important:</strong> If a student does not confirm admission before the deadline, their seat will be released, and the registration fee forfeited.
                 </div>
               </Section>
 
@@ -146,8 +130,8 @@ export default function AdmissionPolicy() {
                     </tbody>
                   </table>
                 </div>
-                <div className="bg-blue-50 border border-blue-200 text-blue-900 rounded-lg p-4">
-                  <strong>Note:</strong> Sessions may extend due to unforeseen circumstances, but TheCorrelation will not charge extra for extended hours or resources.
+                <div className="bg-red-50 border border-red-200 text-gray-900 rounded-lg p-4">
+                  <strong className="text-red-600">Note:</strong> Sessions may extend due to unforeseen circumstances, but TheCorrelation will not charge extra for extended hours or resources.
                 </div>
               </Section>
 
@@ -162,8 +146,8 @@ export default function AdmissionPolicy() {
                   <li><strong>After 15 Days:</strong> INR 3,000</li>
                   <li><strong>Completed Batches:</strong> 1/3rd fee for re-enrollment</li>
                 </ul>
-                <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-4">
-                  <strong>Important:</strong> Students must follow the new curriculum post transfer; earlier communications become void.
+                <div className="bg-red-50 border border-red-200 text-gray-900 rounded-lg p-4">
+                  <strong className="text-red-600">Important:</strong> Students must follow the new curriculum post transfer; earlier communications become void.
                 </div>
               </Section>
 
@@ -199,7 +183,7 @@ export default function AdmissionPolicy() {
                     <li>Withdraw with full fee refund minus ₹5,000 administrative fee</li>
                   </ul>
                 </div>
-                <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-4">
+                <div className="bg-red-50 border border-red-200 text-gray-900 rounded-lg p-4">
                   <ul className="list-disc ml-5 space-y-1">
                     <li>No transfers or refunds after using Pause/Transfer benefits</li>
                     <li>Refunds processed within 45 days</li>
@@ -217,7 +201,7 @@ export default function AdmissionPolicy() {
                 <ul className="space-y-2">
                   <li>All content belongs to TheCorrelation and is IP protected.</li>
                   <li>Content cannot be reproduced or shared without written consent.</li>
-                  <li>Users must not exploit TheCorrelation’s materials commercially.</li>
+                  <li>Users must not exploit TheCorrelation's materials commercially.</li>
                 </ul>
               </Section>
 
@@ -245,12 +229,6 @@ export default function AdmissionPolicy() {
           </article>
         </div>
       </div>
-
-      <style jsx>{`
-        section {
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-      `}</style>
     </>
   );
 }

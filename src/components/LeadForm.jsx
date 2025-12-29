@@ -25,9 +25,24 @@ const LeadForm = () => {
 
   // Course mapping for display names
   const courseMapping = {
-    "chartered-data-scientist": "Chartered Data Scientist",
-    "chartered-business-analytics": "Chartered Business Analytics", 
-    "post-graduation-program": "Post Graduation Program",
+    // Chartered Programs
+    "/courses/chartered-data-science": "Chartered Data Science",
+    "/courses/chartered-bussiness-analytics": "Chartered Business Analytics",
+
+    // Post Graduation Programs
+    "/courses/post-graduation1": "Post Graduation 1",
+    "/courses/post-graduation-program": "Post Graduation Program",
+
+    // Certification Programs
+    "/courses/applied-data-analytics": "Applied Data Analytics",
+    "/courses/foundational-machine-learning": "Foundational Machine Learning",
+    "/courses/advanced-machine-learning": "Advanced Machine Learning",
+    "/courses/deep-learning-with-generative-ai": "Deep Learning with Generative AI",
+
+    // Career Programs
+    "/courses/career-acceleration": "Career Acceleration",
+
+    // Default
     "general": "Our Program"
   };
 
@@ -35,14 +50,30 @@ const LeadForm = () => {
   useEffect(() => {
     const extractCourseFromURL = () => {
       const currentPath = window.location.pathname;
-      const pathSegments = currentPath.replace(/^\/+/, '').split('/');
-      const courseFromURL = pathSegments[0] || 'general';
       
-      setCourseName(courseFromURL);
-      setCourseDisplayName(
-        courseMapping[courseFromURL] || 
-        courseFromURL.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
-      );
+      console.log("Current path:", currentPath); // Debug log
+      
+      // Check if we're on a course page
+      if (currentPath.startsWith("/courses/")) {
+        // Use the full path as courseName (e.g., "/courses/post-graduation-program")
+        setCourseName(currentPath);
+        
+        // Get display name from mapping or format it nicely
+        const displayName = courseMapping[currentPath] || 
+          currentPath
+            .replace("/courses/", "")
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, l => l.toUpperCase());
+        
+        setCourseDisplayName(displayName);
+        console.log("Course name set to:", currentPath); // Debug log
+        console.log("Display name set to:", displayName); // Debug log
+      } else {
+        // Not on a course page, use general
+        setCourseName("general");
+        setCourseDisplayName("Our Program");
+        console.log("No course detected, using 'general'"); // Debug log
+      }
     };
 
     extractCourseFromURL();
@@ -89,83 +120,76 @@ const LeadForm = () => {
     setProgress(Math.round((filled / 6) * 100));
   }, [formData]);
 
-  // Submit to Next.js API route - No more CORS issues!
+  // Submit to Next.js API route
   const submitForm = async (data) => {
-  try {
-    
-    
-    const response = await fetch('/api/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    
+      const result = await response.json();
 
-    const result = await response.json();
-    
+      if (!response.ok || !result.success) {
+        return { success: false, error: result.error || `HTTP error! status: ${response.status}` };
+      }
 
-    if (!response.ok || !result.success) {
-      return { success: false, error: result.error || `HTTP error! status: ${response.status}` };
+      return { success: true, message: result.message, result };
+
+    } catch (error) {
+      return { success: false, error: error.message || "Unexpected error occurred" };
     }
-
-    return { success: true, message: result.message, result };
-
-  } catch (error) {
-    
-    return { success: false, error: error.message || "Unexpected error occurred" };
-  }
-};
+  };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  const error = validateForm();
-  if (error) return showToast(error, "error");
+    e.preventDefault();
+    const error = validateForm();
+    if (error) return showToast(error, "error");
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  try {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const year = now.getFullYear();
-    const formattedTimestamp = `${hours}:${minutes} - ${day}/${month}/${year}`;
+    try {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const year = now.getFullYear();
+      const formattedTimestamp = `${hours}:${minutes} - ${day}/${month}/${year}`;
 
-    const submissionData = {
-      ...formData,
-      courseName: courseName,
-      timestamp: formattedTimestamp,
-    };
+      const submissionData = {
+        ...formData,
+        courseName: courseName, // This now sends the full path like "/courses/post-graduation-program"
+        timestamp: formattedTimestamp,
+      };
 
-    
+      console.log("Submitting data:", submissionData); // Debug log
 
-    const result = await submitForm(submissionData);
+      const result = await submitForm(submissionData);
 
-    if (!result.success) {
-      showToast(result.error || "Submission failed", "error");
-      return;
+      if (!result.success) {
+        showToast(result.error || "Submission failed", "error");
+        return;
+      }
+
+      showToast(result.message || "Submission successful", "success");
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 8000);
+
+    } finally {
+      setIsSubmitting(false);
     }
-
-    showToast(result.message || "Submission successful", "success");
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 8000);
-
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
+  };
 
   return (
-    <div id="contact-form" className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 mt-4 mb-4">
+    <div id="contact-form" className="min-h-screen bg-gray-50 mt-4 mb-4">
       {/* Toast Notification */}
       {toastMessage && (
         <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 ${
           toastType === "success" 
             ? "bg-green-500 text-white" 
-            : "bg-red-500 text-white"
+            : "bg-red-600 text-white"
         }`}>
           <div className="flex items-center space-x-2">
             {toastType === "success" ? (
@@ -181,26 +205,26 @@ const LeadForm = () => {
       )}
       
       <div className="flex min-h-screen">
-        {/* Left Side - Dynamic Content Based on Course */}
-        <div className="hidden md:flex md:w-1/2 lg:w-1/2 bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 p-8 lg:p-16 flex-col justify-center relative overflow-hidden rounded-xl ml-4">
+        {/* Left Side - Red Gradient Background with White Tint */}
+        <div className="hidden md:flex md:w-1/2 lg:w-1/2 bg-[linear-gradient(135deg,#7b25d1,#ff2626,#910000)] p-8 lg:p-16 flex-col justify-center relative overflow-hidden rounded-xl ml-4">
           <div className="relative z-10 text-white">
-            <Star className="h-10 w-10 fill-yellow-400 text-yellow-400 animate-bounce ml-20 mb-15"/>
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 mb-8">
-              <Sparkles className="h-4 w-4 text-amber-400 mr-2" />
-              <span className="text-sm font-medium text-amber-200">Limited Time Offer</span>
+            <Star className="h-10 w-10 fill-white text-white animate-bounce ml-20 mb-15"/>
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 border border-white/30 mb-8">
+              <Sparkles className="h-4 w-4 text-white mr-2" />
+              <span className="text-sm font-medium text-white">Limited Time Offer</span>
             </div>
 
             <div className="mb-12">
               <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-none">
-                <span className="bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent">
+                <span className="text-white">
                   Master
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="text-white drop-shadow-lg">
                   {courseDisplayName || "Your Career"}
                 </span>
               </h1>
-              <p className="text-xl text-purple-100 leading-relaxed max-w-md">
+              <p className="text-xl text-white/90 leading-relaxed max-w-md">
                 {courseDisplayName 
                   ? `Become an expert in ${courseDisplayName.toLowerCase()} with our comprehensive program` 
                   : "Take the first step towards transforming your career with our exclusive program"
@@ -210,20 +234,20 @@ const LeadForm = () => {
 
             <div className="space-y-4 mb-12">
               <div className="flex items-center space-x-4 group">
-                <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full group-hover:scale-150 transition-transform"></div>
-                <span className="text-lg text-purple-100">Personalized Learning Path</span>
+                <div className="w-2 h-2 bg-white rounded-full group-hover:scale-150 transition-transform"></div>
+                <span className="text-lg text-white/90">Personalized Learning Path</span>
               </div>
               <div className="flex items-center space-x-4 group">
-                <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full group-hover:scale-150 transition-transform"></div>
-                <span className="text-lg text-purple-100">Industry Expert Mentorship</span>
+                <div className="w-2 h-2 bg-white rounded-full group-hover:scale-150 transition-transform"></div>
+                <span className="text-lg text-white/90">Industry Expert Mentorship</span>
               </div>
               <div className="flex items-center space-x-4 group">
-                <div className="w-2 h-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full group-hover:scale-150 transition-transform"></div>
-                <span className="text-lg text-purple-100">Lifetime Community Access</span>
+                <div className="w-2 h-2 bg-white rounded-full group-hover:scale-150 transition-transform"></div>
+                <span className="text-lg text-white/90">Lifetime Community Access</span>
               </div>
             </div>
 
-            <div className="flex items-center text-amber-300 group cursor-pointer">
+            <div className="flex items-center text-white group cursor-pointer">
               <span className="text-lg font-medium mr-3">Start your journey</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform" />
             </div>
@@ -236,13 +260,13 @@ const LeadForm = () => {
           </div>
         </div>
 
-        {/* Right Side - Form */}
+        {/* Right Side - Form with White Background and Red Tint */}
         <div className="w-full md:w-1/2 lg:w-2/5 flex items-center justify-center p-4 lg:p-8">
-          <div className="w-full max-w-md bg-white bg-opacity-95 backdrop-blur-md p-6 lg:p-8 rounded-2xl shadow-2xl border border-white/20">
+          <div className="w-full max-w-md bg-white p-6 lg:p-8 rounded-2xl shadow-2xl border border-red-100">
             {!submitted ? (
               <div className="space-y-6">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
                     {courseDisplayName ? `Apply for ${courseDisplayName}` : "Let's Get Started"}
                   </h2>
                   <p className="text-gray-600">Just a minute to get started</p>
@@ -256,7 +280,7 @@ const LeadForm = () => {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+                      className="bg-gradient-to-r from-red-600 to-red-500 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${progress}%` }}
                     ></div>
                   </div>
@@ -265,7 +289,7 @@ const LeadForm = () => {
                 <input
                   name="name"
                   placeholder="Full Name"
-                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   onChange={handleChange}
                   value={formData.name}
                 />
@@ -281,8 +305,8 @@ const LeadForm = () => {
                         key={val}
                         className={`w-full px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all duration-200 ${
                           formData.education === val
-                            ? "bg-indigo-600 text-white border-indigo-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400"
+                            ? "bg-red-600 text-white border-red-600"
+                            : "bg-white text-gray-700 border-gray-300 hover:border-red-400"
                         }`}
                         onClick={() => handleOptionClick("education", val)}
                       >
@@ -303,8 +327,8 @@ const LeadForm = () => {
                         key={val}
                         className={`px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all duration-200 ${
                           formData.background === val
-                            ? "bg-indigo-600 text-white border-indigo-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400"
+                            ? "bg-red-600 text-white border-red-600"
+                            : "bg-white text-gray-700 border-gray-300 hover:border-red-400"
                         }`}
                         onClick={() => handleOptionClick("background", val)}
                       >
@@ -325,8 +349,8 @@ const LeadForm = () => {
                         key={val}
                         className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all duration-200 ${
                           formData.employment === val
-                            ? "bg-indigo-600 text-white border-indigo-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400"
+                            ? "bg-red-600 text-white border-red-600"
+                            : "bg-white text-gray-700 border-gray-300 hover:border-red-400"
                         }`}
                         onClick={() => handleOptionClick("employment", val)}
                       >
@@ -339,7 +363,7 @@ const LeadForm = () => {
                 <input
                   name="phone"
                   placeholder="Phone Number"
-                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   onChange={handleChange}
                   value={formData.phone}
                 />
@@ -347,7 +371,7 @@ const LeadForm = () => {
                 <input
                   name="email"
                   placeholder="Email Address"
-                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   onChange={handleChange}
                   value={formData.email}
                 />
@@ -359,7 +383,7 @@ const LeadForm = () => {
                   className={`w-full py-3 font-semibold rounded-lg transition-all duration-200 ${
                     isSubmitting
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 hover:shadow-lg transform hover:scale-105"
+                      : "bg-green-600 hover:shadow-lg transform hover:scale-105"
                   } text-white`}
                 >
                   {isSubmitting ? "Submitting..." : "Apply Now"}

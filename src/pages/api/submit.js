@@ -1,4 +1,4 @@
-const GOOGLE_APPS_SCRIPT_URL = "";
+const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL_Submit;
 
 
 export default async function handler(req, res) {

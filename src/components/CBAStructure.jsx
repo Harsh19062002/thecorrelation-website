@@ -8,7 +8,6 @@ import {
   BarChart3, 
   BookOpen,
   Target,
-  Code, 
   FileSpreadsheet, 
   Box,
   PieChart, 
@@ -20,6 +19,7 @@ import {
   ChevronRight, 
   FolderOpen, 
   Zap, 
+  Code,
   GitBranch, 
   Workflow, 
   Settings, 
@@ -46,10 +46,10 @@ const preRequisites = [
   {
     id: "intro-data-science",
     title: "Introduction to Data Science and Analytics",
-    icon: <Database className="w-8 h-8" />,
-    color: "from-red-500 via-pink-500 to-rose-400",
+    icon: <Database className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Foundation concepts of data science, analytics workflows, and industry applications",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "What is Data Science?",
       "Data Analytics vs Data Science", 
@@ -61,10 +61,10 @@ const preRequisites = [
   {
     id: "basics-mathematics",
     title: "Basics of Mathematics",
-    icon: <Calculator className="w-8 h-8" />,
-    color: "from-amber-500 via-orange-500 to-red-400",
+    icon: <Calculator className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Essential mathematical foundations for data science and analytics",
-    duration: "3 weeks",
+    duration: "1 weeks",
     topics: [
       "Number System",
       "Permutation Combinations",
@@ -74,10 +74,10 @@ const preRequisites = [
   {
     id: "statistics",
     title: "Statistics",
-    icon: <BarChart3 className="w-8 h-8" />,
-    color: "from-blue-500 via-purple-500 to-pink-400",
+    icon: <BarChart3 className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Core statistical concepts and methods for data analysis",
-    duration: "4 weeks",
+    duration: "1 weeks",
     topics: [
       "Data and types of data",
       "Central tendencies", 
@@ -90,10 +90,10 @@ const preRequisites = [
   {
     id: "basics-python",
     title: "Basics of Python",
-    icon: <Code className="w-8 h-8" />,
-    color: "from-blue-600 via-blue-500 to-cyan-400",
+    icon: <Code className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Python programming fundamentals for data science applications",
-    duration: "3 weeks",
+    duration: "1 weeks",
     topics: [
       "Datatypes",
       "List, Tuple, Dictionaries",
@@ -105,10 +105,10 @@ const preRequisites = [
   {
     id: "statistical-analysis-excel",
     title: "Statistical Analysis with MS Excel",
-    icon: <FileSpreadsheet className="w-8 h-8" />,
-    color: "from-green-500 via-emerald-500 to-teal-400",
+    icon: <FileSpreadsheet className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Data analysis and statistical operations using Microsoft Excel",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Data Handling",
       "Statistical Analysis",
@@ -123,8 +123,8 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "numpy",
     title: "Numpy",
-    icon: <Box className="w-8 h-8" />,
-    color: "from-blue-600 via-indigo-500 to-purple-400",
+    icon: <Box className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Numerical computing library for efficient array operations and mathematical functions",
     duration: "1 week",
     topics: [
@@ -136,10 +136,10 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "visualization",
     title: "Visualization", 
-    icon: <PieChart className="w-8 h-8" />,
-    color: "from-orange-500 via-amber-500 to-yellow-400",
+    icon: <PieChart className="w-8 h-8  text-white" />,
+    color: "white",
     description: "Data visualization techniques and libraries for creating insightful charts",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Types of Plots",
       "Matplotlib",
@@ -150,10 +150,10 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "pandas",
     title: "Pandas",
-    icon: <Table className="w-8 h-8" />,
-    color: "from-indigo-500 via-purple-500 to-pink-400", 
+    icon: <Table className="w-8 h-8  text-white" />,
+    color: "white", 
     description: "Data manipulation and analysis library for structured data processing",
-    duration: "3 weeks",
+    duration: "1 weeks",
     topics: [
       "Pandas Series",
       "Pandas Dataframes",
@@ -166,8 +166,8 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "exploratory-data-analysis",
     title: "Exploratory Data Analysis",
-    icon: <Search className="w-8 h-8" />,
-    color: "from-pink-500 via-rose-500 to-red-400",
+    icon: <Search className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Techniques for exploring and understanding datasets through statistical methods",
     duration: "2 weeks", 
     topics: [
@@ -179,10 +179,10 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "power-bi",
     title: "Power BI",
-    icon: <BarChart className="w-8 h-8" />,
-    color: "from-yellow-500 via-orange-500 to-red-400",
+    icon: <BarChart className="w-8 h-8  text-white" />,
+    color: "white",
     description: "Business intelligence tool for creating interactive dashboards and reports",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Interactive Plotting",
       "Data Transformation", 
@@ -194,10 +194,10 @@ const fundamentalsOfDataAnalytics = [
   {
     id: "sql",
     title: "SQL",
-    icon: <Database className="w-8 h-8" />,
-    color: "from-cyan-500 via-blue-500 to-indigo-400",
+    icon: <Database className="w-8 h-8  text-white" />,
+    color: "white",
     description: "Database querying language for data extraction and manipulation",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Sub query",
       "Common table expression",
@@ -213,10 +213,10 @@ const advanceBusinessAnalytics = [
   {
     id: "machine-learning-fundamentals",
     title: "Machine Learning Fundamentals for BA",
-    icon: <Brain className="w-8 h-8" />,
-    color: "from-purple-600 via-indigo-500 to-blue-400",
+    icon: <Brain className="w-8 h-8  text-white" />,
+    color: "white",
     description: "Core machine learning concepts and techniques for business analytics",
-    duration: "3 weeks",
+    duration: "2 weeks",
     topics: [
       "Supervised ML",
       "Unsupervised ML", 
@@ -226,10 +226,10 @@ const advanceBusinessAnalytics = [
   {
     id: "business-consulting",
     title: "Business Consulting Essentials",
-    icon: <Users className="w-8 h-8" />,
-    color: "from-pink-500 via-purple-500 to-indigo-400",
+    icon: <Users className="w-8 h-8  text-white" />,
+    color: "white",
     description: "Essential skills for business consulting and stakeholder management",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Problem Structuring",
       "Stakeholder Handling"
@@ -238,10 +238,10 @@ const advanceBusinessAnalytics = [
   {
     id: "project-management", 
     title: "Project Management Fundamentals",
-    icon: <FolderOpen className="w-8 h-8" />,
-    color: "from-purple-500 via-pink-500 to-rose-400",
+    icon: <FolderOpen className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Project management methodologies and tools for analytics projects",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Scoping & Scheduling",
       "Risk & Communication", 
@@ -251,8 +251,8 @@ const advanceBusinessAnalytics = [
   {
     id: "agile-methodology",
     title: "Agile Methodology",
-    icon: <Zap className="w-8 h-8" />,
-    color: "from-orange-500 via-red-500 to-pink-400",
+    icon: <Zap className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Agile project management frameworks and implementation strategies",
     duration: "1 week", 
     topics: [
@@ -263,8 +263,8 @@ const advanceBusinessAnalytics = [
   {
     id: "jira-confluence",
     title: "Jira and Confluence",
-    icon: <GitBranch className="w-8 h-8" />,
-    color: "from-blue-600 via-cyan-500 to-teal-400",
+    icon: <GitBranch className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Project tracking and collaboration tools for team management",
     duration: "1 week",
     topics: [
@@ -275,8 +275,8 @@ const advanceBusinessAnalytics = [
   {
     id: "power-automate-visio",
     title: "Power Automate and Visio", 
-    icon: <Workflow className="w-8 h-8" />,
-    color: "from-indigo-500 via-blue-500 to-cyan-400",
+    icon: <Workflow className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Process automation and workflow visualization tools",
     duration: "1 week",
     topics: [
@@ -287,10 +287,10 @@ const advanceBusinessAnalytics = [
   {
     id: "alteryx-ui-path",
     title: "Alteryx and UI Path",
-    icon: <Settings className="w-8 h-8" />,
-    color: "from-teal-500 via-cyan-500 to-blue-400", 
+    icon: <Settings className="w-8 h-8 text-white" />,
+    color: "white", 
     description: "Advanced data preparation and robotic process automation tools",
-    duration: "2 weeks",
+    duration: "1 weeks",
     topics: [
       "Data Prep & Blending",
       "Task Automation"
@@ -299,8 +299,8 @@ const advanceBusinessAnalytics = [
   {
     id: "sdlc",
     title: "Software Development Life Cycle (SDLC)",
-    icon: <Repeat className="w-8 h-8" />,
-    color: "from-green-500 via-teal-500 to-cyan-400",
+    icon: <Repeat className="w-8 h-8 text-white" />,
+    color: "white",
     description: "Software development methodologies and lifecycle management",
     duration: "1 week", 
     topics: [
@@ -340,17 +340,17 @@ const advanceBusinessAnalytics = [
               <div className="flex items-start justify-between mb-4 sm:mb-6">
                 {/* Icon, Title, and Description in one line */}
                 <div className="flex items-center gap-3 sm:gap-2 flex-1">
-                  <div className="p-2 sm:p-3 lg:p-4 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex-shrink-0 flex items-center justify-center">
+                  <div className="p-2 sm:p-3 lg:p-4 bg-red-600 backdrop-blur-sm rounded-xl sm:rounded-2xl flex-shrink-0 flex items-center justify-center">
                     <div className="w-6 h-6 sm:w-9 sm:h-8 lg:w-8 lg:h-8 flex items-center justify-center">
                       {module.icon}
                     </div>
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white font-bold text-lg sm:text-xl lg:text-2xl leading-tight mb-1">
+                    <h3 className="text-black font-bold text-lg sm:text-xl lg:text-2xl leading-tight mb-1">
                       {module.title}
                     </h3>
-                    <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                    <p className="text-black text-sm sm:text-base leading-relaxed">
                       {module.description}
                     </p>
                   </div>
@@ -358,7 +358,7 @@ const advanceBusinessAnalytics = [
 
                 {/* Duration and Chevron */}
                 <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ml-4">
-                  <span className="px-2 sm:px-3 py-1 bg-white/20 rounded-full text-xs sm:text-sm font-medium text-white">
+                  <span className="px-2 sm:px-3 py-1 bg-black/10 rounded-full text-xs sm:text-sm font-medium text-black">
                     {module.duration}
                   </span>
                   <div
@@ -367,14 +367,14 @@ const advanceBusinessAnalytics = [
         ${isExpanded ? "rotate-180" : "hover:rotate-90"}
       `}
                   >
-                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
                   </div>
                 </div>
               </div>
 
               {/* Topics info moved to bottom */}
-              <div className="flex mx-20 items-center gap-2 text-white/80 text-xs sm:text-sm">
-                <BookOpen className=" w-3 h-3 sm:w-4 sm:h-4" />
+              <div className="flex mx-20 items-center gap-2 text-black/80 text-xs sm:text-sm">
+                <BookOpen className=" w-3 h-3 sm:w-4 sm:h-4 text-red-600" />
                 <span>{module.topics?.length || 0} Topics</span>
               </div>
             </div>
@@ -389,7 +389,7 @@ const advanceBusinessAnalytics = [
           >
             <div className="p-4 sm:p-6 lg:p-8">
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
                 <h4 className="text-lg sm:text-xl font-bold text-gray-800">
                   Learning Objectives
                 </h4>
@@ -401,7 +401,7 @@ const advanceBusinessAnalytics = [
                     key={topicIndex}
                     className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl hover:bg-gray-100 transition-colors duration-200 group/topic"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm">
+                    <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm">
                       {topicIndex + 1}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -487,7 +487,7 @@ const advanceBusinessAnalytics = [
       <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl font-bold">
               Course Curriculum
             </h1>
 
@@ -497,7 +497,7 @@ const advanceBusinessAnalytics = [
                 onClick={() => setActiveSection("preRequisites")}
                 className={`px-4 py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${
                   activeSection === "preRequisites"
-                    ? "bg-white text-blue-600 shadow-md"
+                    ? "bg-white text-red-600 shadow-md"
                     : "text-gray-600 hover:text-gray-800"
                 }`}
               >
@@ -507,7 +507,7 @@ const advanceBusinessAnalytics = [
                 onClick={() => setActiveSection("fundamentalsOfDataAnalytics")}
                 className={`px-4 py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${
                   activeSection === "fundamentalsOfDataAnalytics"
-                    ? "bg-white text-blue-600 shadow-md"
+                    ? "bg-white text-red-600 shadow-md"
                     : "text-gray-600 hover:text-gray-800"
                 }`}
               >
@@ -517,7 +517,7 @@ const advanceBusinessAnalytics = [
                 onClick={() => setActiveSection("advanceBusinessAnalytics")}
                 className={`px-4 py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${
                   activeSection === "advanceBusinessAnalytics"
-                    ? "bg-white text-blue-600 shadow-md"
+                    ? "bg-white text-red-600 shadow-md"
                     : "text-gray-600 hover:text-gray-800"
                 }`}
               >
@@ -585,7 +585,7 @@ const advanceBusinessAnalytics = [
           {/* Desktop Progress Flow */}
           <div className="hidden lg:flex items-center justify-center gap-4 mb-8 overflow-x-auto pb-4">
             <div className="text-center flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
                 {preRequisites.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
@@ -594,7 +594,7 @@ const advanceBusinessAnalytics = [
             </div>
             <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0" />
             <div className="text-center flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
                 {fundamentalsOfDataAnalytics.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
@@ -603,7 +603,7 @@ const advanceBusinessAnalytics = [
             </div>
             <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0" />
             <div className="text-center flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
                 {advanceBusinessAnalytics.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
@@ -612,7 +612,7 @@ const advanceBusinessAnalytics = [
             </div>
             <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0" />
             <div className="text-center flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
                 🎓
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
@@ -621,11 +621,11 @@ const advanceBusinessAnalytics = [
             </div>
             <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0" />
             <div className="text-center flex-shrink-0">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-2">
                 💼
               </div>
               <p className="text-gray-600 font-medium text-xs sm:text-sm">
-                Paid Internship
+                Job Assurance
               </p>
             </div>
           </div>
@@ -633,19 +633,19 @@ const advanceBusinessAnalytics = [
           {/* Mobile Progress Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:hidden gap-4 mb-8">
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
+              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
                 {preRequisites.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs">Pre-requisites</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
+              <div className="w-12 h-12bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
                 {fundamentalsOfDataAnalytics.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs">Fundamentals</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
+              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
                 {advanceBusinessAnalytics.length || 0}
               </div>
               <p className="text-gray-600 font-medium text-xs">
@@ -653,21 +653,26 @@ const advanceBusinessAnalytics = [
               </p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
+              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
                 🎓
               </div>
               <p className="text-gray-600 font-medium text-xs">Certification</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
+              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mb-2 mx-auto">
                 💼
               </div>
-              <p className="text-gray-600 font-medium text-xs">Paid Internship</p>
+              <p className="text-gray-600 font-medium text-xs">Job Assurance</p>
             </div>
           </div>
 
           <div className="text-center">
-            <button className="inline-flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+            <button
+             onClick={() => {
+                    const formElement = document.getElementById("contact-form");
+                    if (formElement) formElement.scrollIntoView({ behavior: "smooth" });
+                  }}
+            className="inline-flex items-center gap-3 sm:gap-4 bg-green-600 text-white px-8 sm:px-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
               <span>Enroll Now</span>
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>

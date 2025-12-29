@@ -1,50 +1,63 @@
-
 @import "tailwindcss";
 
-/* Font rendering optimizations */
+/* ----------------------------------------
+   GLOBAL RENDERING & SMOOTHING
+----------------------------------------- */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern";
   font-kerning: normal;
-  scroll-behavior: smooth;
+  
 }
 
-
-
-
-/* Base body settings */
+/* ----------------------------------------
+   BODY SETTINGS
+----------------------------------------- */
 body {
   font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: #111827; /* Tailwind's gray-900 */
+  color: #111827;
   background-color: #fff;
+
+  position: static !important
 }
 
+* {
+  box-sizing: border-box;
+}
 
-
-
+/* ----------------------------------------
+   CSS VARIABLES
+----------------------------------------- */
 :root {
- 
-  /* Colors */
-  --color-primary: #2563EB;     /* blue-600 */
-  --color-accent: #10B981;      /* emerald-500 */
-  --color-highlight: #FBBF24;   /* amber-400 */
-  --color-base: #F9FAFB;        /* gray-50 */
+  --color-primary: #2563EB;
+  --color-accent: #10B981;
+  --color-highlight: #FBBF24;
+  --color-base: #F9FAFB;
 }
 
-
+/* ----------------------------------------
+   UTILITIES & ANIMATIONS
+----------------------------------------- */
 
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+/* Floating animation */
 .floating-animation {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Lift hover */
 .hover-lift {
   transition: transform 0.3s ease;
 }
@@ -52,24 +65,7 @@ body {
   transform: translateY(-5px);
 }
 
-.floating-animation {
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* Gradient background */
-.gradient-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-/* Hover effect for cards */
+/* Card hover */
 .card-hover {
   transition: all 0.3s ease;
 }
@@ -78,12 +74,12 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Count-up animation */
+/* Tabular numeric animation */
 .count-up {
   font-variant-numeric: tabular-nums;
 }
 
-/* Sticky CTA section (if any) */
+/* Sticky CTA (if used) */
 .sticky-cta {
   position: fixed;
   bottom: 0;
@@ -92,7 +88,7 @@ body {
   z-index: 50;
 }
 
-/* Floating chat bubble (if used) */
+/* Chat bubble */
 .chat-bubble {
   position: fixed;
   bottom: 20px;
@@ -100,12 +96,12 @@ body {
   z-index: 50;
 }
 
-/* Progress bar animation */
+/* Progress bar transition */
 .progress-bar {
   transition: width 0.3s ease;
 }
 
-/* Form step control */
+/* Form step system */
 .form-step {
   display: none;
 }
@@ -113,32 +109,22 @@ body {
   display: block;
 }
 
-
-/* Animation for fade-in */
+/* Fade-in animation */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Marquee effect (if needed) */
+/* Marquee */
 .marquee {
   animation: marquee 20s linear infinite;
 }
 @keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
+/* Timeline activation */
 .timeline-item.active {
   opacity: 1 !important;
   filter: blur(0) !important;
@@ -149,12 +135,12 @@ body {
   transform: scale(1.1);
 }
 
-
+/* Custom gradient utility */
 .bg-gradient-custom {
   background: linear-gradient(90deg, #ff2626, #d42087);
 }
 
+/* Custom font */
 .agrandir-font {
   font-family: 'Agrandir', sans-serif;
 }
-

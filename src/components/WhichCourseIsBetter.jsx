@@ -10,8 +10,8 @@ const quizData = [
     options: [
       { id: "beginner", text: "Complete beginner", weight: { certification: 3, career: 2 } },
       { id: "some", text: "Some experience", weight: { postgrad: 2, applied: 3 } },
-      { id: "intermediate", text: "Intermediate level", weight: { chartered: 3, advanced: 2 } },
-      { id: "advanced", text: "Advanced practitioner", weight: { advanced: 3, chartered: 2 } }
+      { id: "intermediate", text: "Intermediate level", weight: { chartered: 3, advanced: 2, elevated: 1 } },
+      { id: "advanced", text: "Advanced practitioner", weight: { advanced: 3, chartered: 2, elevated: 3 } }
     ]
   },
   {
@@ -19,10 +19,10 @@ const quizData = [
     question: "Which areas interest you most? (Select all that apply)",
     type: "multi",
     options: [
-      { id: "ml", text: "Machine Learning", weight: { ml: 3, advanced_ml: 2, ai: 2 } },
+      { id: "ml", text: "Machine Learning", weight: { ml: 3, advanced_ml: 2, ai: 2, elevated: 1 } },
       { id: "analytics", text: "Business Analytics", weight: { business: 3, applied: 2 } },
-      { id: "ai", text: "Artificial Intelligence", weight: { ai: 3, advanced_ml: 2 } },
-      { id: "data_science", text: "Data Science", weight: { applied: 3, chartered_ds: 2 } }
+      { id: "ai", text: "Artificial Intelligence", weight: { ai: 3, advanced_ml: 2, elevated: 1 } },
+      { id: "data_science", text: "Data Science", weight: { applied: 3, chartered_ds: 2, elevated: 1 } }
     ]
   },
   {
@@ -31,7 +31,7 @@ const quizData = [
     type: "single",
     options: [
       { id: "part_time", text: "Part-time, flexible schedule", weight: { certification: 3, applied: 2 } },
-      { id: "intensive", text: "Intensive, full-time", weight: { postgrad: 3, chartered: 2 } },
+      { id: "intensive", text: "Intensive, full-time", weight: { postgrad: 3, chartered: 2, elevated: 2 } },
       { id: "self_paced", text: "Self-paced learning", weight: { certification: 2, applied: 3 } },
       { id: "structured", text: "Structured program", weight: { postgrad: 3, chartered: 3 } }
     ]
@@ -43,8 +43,8 @@ const quizData = [
     options: [
       { id: "switch", text: "Career switch to data field", weight: { career: 3, certification: 2 } },
       { id: "advance", text: "Advance in current role", weight: { applied: 3, business: 2 } },
-      { id: "specialize", text: "Deep specialization", weight: { chartered: 3, advanced: 2 } },
-      { id: "leadership", text: "Leadership in data teams", weight: { postgrad: 3, business: 3 } }
+      { id: "specialize", text: "Deep specialization", weight: { chartered: 3, advanced: 2, elevated: 2 } },
+      { id: "leadership", text: "Leadership in data teams", weight: { postgrad: 3, business: 3, elevated: 3 } }
     ]
   },
   {
@@ -52,9 +52,9 @@ const quizData = [
     question: "Which programming languages do you know?",
     type: "multi",
     options: [
-      { id: "python", text: "Python", weight: { ml: 2, applied: 3, ai: 2 } },
-      { id: "r", text: "R", weight: { applied: 3, business: 2 } },
-      { id: "sql", text: "SQL", weight: { business: 3, applied: 2 } },
+      { id: "python", text: "Python", weight: { ml: 2, applied: 3, ai: 2, elevated: 1 } },
+      { id: "r", text: "R", weight: { applied: 3, business: 2, elevated: 1 } },
+      { id: "sql", text: "SQL", weight: { business: 3, applied: 2, elevated: 1 } },
       { id: "none", text: "None yet", weight: { certification: 3, career: 2 } }
     ]
   },
@@ -63,10 +63,10 @@ const quizData = [
     question: "What type of projects excite you most?",
     type: "single",
     options: [
-      { id: "predictive", text: "Predictive modeling", weight: { ml: 3, advanced_ml: 2 } },
+      { id: "predictive", text: "Predictive modeling", weight: { ml: 3, advanced_ml: 2, elevated: 1 } },
       { id: "business_insights", text: "Business insights", weight: { business: 3, applied: 2 } },
-      { id: "ai_systems", text: "AI systems", weight: { ai: 3, advanced_ml: 2 } },
-      { id: "research", text: "Research projects", weight: { chartered: 3, postgrad: 2 } }
+      { id: "ai_systems", text: "AI systems", weight: { ai: 3, advanced_ml: 2, elevated: 2 } },
+      { id: "research", text: "Research projects", weight: { chartered: 3, postgrad: 2, elevated: 2 } }
     ]
   },
   {
@@ -76,8 +76,8 @@ const quizData = [
     options: [
       { id: "5_hours", text: "5-10 hours", weight: { certification: 3, applied: 2 } },
       { id: "15_hours", text: "10-15 hours", weight: { applied: 3, business: 2 } },
-      { id: "20_hours", text: "15-20 hours", weight: { chartered: 2, postgrad: 3 } },
-      { id: "full_time", text: "20+ hours", weight: { postgrad: 3, chartered: 3 } }
+      { id: "20_hours", text: "15-20 hours", weight: { chartered: 2, postgrad: 3, elevated: 1 } },
+      { id: "full_time", text: "20+ hours", weight: { postgrad: 3, chartered: 3, elevated: 2 } }
     ]
   },
   {
@@ -87,8 +87,8 @@ const quizData = [
     options: [
       { id: "non_tech", text: "Non-technical field", weight: { career: 3, certification: 2 } },
       { id: "some_tech", text: "Some technical background", weight: { applied: 3, business: 2 } },
-      { id: "engineering", text: "Engineering/CS", weight: { ml: 2, advanced: 3 } },
-      { id: "advanced_degree", text: "Advanced degree", weight: { chartered: 3, postgrad: 2 } }
+      { id: "engineering", text: "Engineering/CS", weight: { ml: 2, advanced: 3, elevated: 1 } },
+      { id: "advanced_degree", text: "Advanced degree", weight: { chartered: 3, postgrad: 2, elevated: 3 } }
     ]
   },
   {
@@ -96,10 +96,10 @@ const quizData = [
     question: "Which industries interest you? (Select all that apply)",
     type: "multi",
     options: [
-      { id: "finance", text: "Finance & Banking", weight: { business: 3, applied: 2 } },
+      { id: "finance", text: "Finance & Banking", weight: { business: 3, applied: 2, elevated: 1 } },
       { id: "healthcare", text: "Healthcare", weight: { applied: 3, ml: 2 } },
-      { id: "tech", text: "Technology", weight: { ai: 3, advanced: 2 } },
-      { id: "consulting", text: "Consulting", weight: { business: 3, chartered: 2 } }
+      { id: "tech", text: "Technology", weight: { ai: 3, advanced: 2, elevated: 2 } },
+      { id: "consulting", text: "Consulting", weight: { business: 3, chartered: 2, elevated: 1 } }
     ]
   },
   {
@@ -108,8 +108,8 @@ const quizData = [
     type: "single",
     options: [
       { id: "practical", text: "Hands-on practical skills", weight: { applied: 3, certification: 2 } },
-      { id: "theory", text: "Strong theoretical foundation", weight: { chartered: 3, postgrad: 2 } },
-      { id: "industry", text: "Industry connections", weight: { career: 3, postgrad: 2 } },
+      { id: "theory", text: "Strong theoretical foundation", weight: { chartered: 3, postgrad: 2, elevated: 2 } },
+      { id: "industry", text: "Industry connections", weight: { career: 3, postgrad: 2, elevated: 2 } },
       { id: "flexibility", text: "Learning flexibility", weight: { certification: 3, applied: 2 } }
     ]
   }
@@ -118,64 +118,22 @@ const quizData = [
 const courses = {
   postgrad: {
     name: "Post Graduation Program",
-    description: "Comprehensive program designed for career advancement with industry mentorship and capstone projects.",
-    link: "/courses/post-graduation-program"
-  },
-  postgrad1: {
-    name: "Post Graduation 1",
-    description: "Foundational post-graduate program focusing on core data science principles and methodologies.",
-    link: "/courses/post-graduation-1"
-  },
-  postgrad2: {
-    name: "Post Graduation 2",
-    description: "Advanced post-graduate program with specialized tracks and research opportunities.",
-    link: "/courses/post-graduation-2"
+    description:
+      "Comprehensive program designed for career advancement with industry mentorship and capstone projects.",
+    link: "/courses/post-graduation-program",
   },
   chartered_ds: {
     name: "Chartered Data Science",
-    description: "Professional certification program for data science mastery with industry recognition.",
-    link: "/courses/chartered-data-science"
+    description:
+      "Professional certification program for data science mastery with industry recognition.",
+    link: "/courses/chartered-data-science",
   },
-  business: {
+  chartered_ba: {
     name: "Chartered Business Analytics",
-    description: "Strategic analytics program focusing on business intelligence and decision-making frameworks.",
-    link: "/courses/chartered-business-analytics"
+    description:
+      "Strategic analytics program focusing on business intelligence and decision-making frameworks.",
+    link: "/courses/chartered-business-analytics",
   },
-  certification: {
-    name: "Certification Courses",
-    description: "Flexible certification programs designed for skill building and career transitions.",
-    link: "/courses/certification-courses"
-  },
-  applied: {
-    name: "Applied Data Science",
-    description: "Practical, hands-on program focusing on real-world data science applications and projects.",
-    link: "/courses/applied-data-science"
-  },
-  ml: {
-    name: "Machine Learning",
-    description: "Comprehensive machine learning program covering algorithms, implementation, and deployment.",
-    link: "/courses/machine-learning"
-  },
-  applied_science: {
-    name: "Applied Science",
-    description: "Interdisciplinary program combining scientific methods with practical applications.",
-    link: "/courses/applied-science"
-  },
-  advanced_ml: {
-    name: "Advanced Machine Learning",
-    description: "Deep dive into cutting-edge ML techniques, neural networks, and advanced algorithms.",
-    link: "/courses/advanced-machine-learning"
-  },
-  ai: {
-    name: "Advanced Artificial Intelligence",
-    description: "Comprehensive AI program covering deep learning, NLP, computer vision, and AI ethics.",
-    link: "/courses/advanced-artificial-intelligence"
-  },
-  career: {
-    name: "Career Acceleration",
-    description: "Fast-track program designed for rapid career transition into data science roles.",
-    link: "/courses/career-acceleration"
-  }
 };
 
 export default function CourseQuiz() {
@@ -280,80 +238,89 @@ export default function CourseQuiz() {
 
   if (showWelcome) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="max-w-4xl w-full text-center">
-          <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-12">
-            <div className="mb-10">
-              <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-10 h-10 text-white" />
-              </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                Find Your Perfect Course
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
-                Take our quick 10-question quiz to get a personalized course recommendation.
-              </p>
-              
-              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm text-gray-500 mb-8">
-                <span className="flex items-center">
-                  <Clock className="w-4 h-4 text-green-500 mr-1" />
-                  5 minutes
-                </span>
-                <span className="flex items-center">
-                  <Zap className="w-4 h-4 text-blue-500 mr-1" />
-                  Personalized
-                </span>
-                <span className="flex items-center">
-                  <Gift className="w-4 h-4 text-purple-500 mr-1" />
-                  Free
-                </span>
-              </div>
-            </div>
+      <div className="flex items-center justify-center px-4 py-10 md:p-16 bg-gray-100">
+  <div className="max-w-6xl w-full">
+    <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 text-center">
+      
+      {/* Icon */}
+      <div className="mb-8">
+        <div className="w-14 h-14 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg">
+          <Target className="w-7 h-7 md:w-10 md:h-10 text-white" />
+        </div>
 
-            <button
-              onClick={startQuiz}
-              className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 md:px-12 py-3 md:py-4 rounded-2xl font-semibold text-lg md:text-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse"
-            >
-              Let's Find Your Course!
-              <ChevronRight className="w-5 h-5 ml-2 inline" />
-            </button>
-            
-            <p className="text-gray-500 text-sm mt-4">
-              Free • No signup required • Instant results
-            </p>
-          </div>
+        {/* Heading */}
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+          Find Your Perfect Course
+        </h1>
+
+        {/* Description */}
+        <p className="text-base sm:text-lg text-gray-600 mb-6 md:mb-8 max-w-xl mx-auto">
+          Take our quick 10-question quiz to get a personalized course recommendation.
+        </p>
+
+        {/* Info Pills */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-6 text-sm text-gray-600 mb-6 md:mb-8">
+          <span className="flex items-center">
+            <Clock className="w-4 h-4 text-red-600 mr-1" />
+            5 minutes
+          </span>
+          <span className="flex items-center">
+            <Zap className="w-4 h-4 text-red-600 mr-1" />
+            Personalized
+          </span>
+          <span className="flex items-center">
+            <Gift className="w-4 h-4 text-red-600 mr-1" />
+            Free
+          </span>
         </div>
       </div>
+
+      {/* CTA Button */}
+      <button
+        onClick={startQuiz}
+        className="w-full sm:w-auto bg-red-600 text-white px-6 sm:px-10 md:px-12 py-3 md:py-4 rounded-2xl font-semibold text-base sm:text-lg md:text-xl hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+      >
+        Let&apos;s Find Your Course!
+        <ChevronRight className="w-5 h-5 ml-2 inline" />
+      </button>
+
+      {/* Subtext */}
+      <p className="text-gray-500 text-xs sm:text-sm mt-4">
+        Free • No signup required • Instant results
+      </p>
+    </div>
+  </div>
+</div>
     );
   }
 
   if (showResults) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-500 to-purple-600">
-        <div className="max-w-2xl w-full rounded-3xl bg-white/10 backdrop-blur-lg p-6 md:p-8 text-white text-center animate-in slide-in-from-bottom duration-500">
+      <div className=" flex items-center justify-center p-4 bg-gray-100 ">
+        <div className="max-w-2xl w-full rounded-3xl bg-black/5 backdrop-blur-lg p-6 md:p-8  text-center">
           <div className="mb-6">
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <GraduationCap className="w-10 h-10 text-white" />
+            <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <GraduationCap className="w-10 h-10 text-white " />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold mb-2">Perfect Match Found!</h2>
-            <p className="text-lg opacity-90">Based on your responses, we recommend:</p>
+            <p className="text-lg ">Based on your responses, we recommend:</p>
           </div>
           
           <div className="bg-white/10 rounded-2xl p-6 mb-6">
             <h3 className="text-xl md:text-2xl font-bold mb-3">{recommendedCourse?.name}</h3>
-            <p className="text-base md:text-lg opacity-90 mb-4">{recommendedCourse?.description}</p>
+            <p className="text-base md:text-lg mb-4">{recommendedCourse?.description}</p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => window.open(recommendedCourse?.link, '_blank')}
-                className="bg-white text-indigo-600 px-6 md:px-8 py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="bg-white text-red-600 px-6 md:px-8 py-3 rounded-xl font-semibold hover:bg-white/90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
               >
                 View Course Details
                 <ExternalLink className="w-4 h-4 ml-2" />
               </button>
               <button 
                 onClick={resetQuiz}
-                className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 flex items-center justify-center"
+                className="border-2 border-white  px-6 md:px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-red-600 transition-all duration-300 flex items-center justify-center"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
                 Retake Quiz
@@ -361,7 +328,7 @@ export default function CourseQuiz() {
             </div>
           </div>
           
-          <p className="text-sm opacity-75">
+          <p className="text-sm ">
             <Target className="w-4 h-4 inline mr-1" />
             This recommendation is based on your learning preferences and career goals
           </p>
@@ -373,12 +340,12 @@ export default function CourseQuiz() {
   const question = quizData[currentQuestion];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Header */}
-      <div className="bg-white shadow-sm p-4">
+      <div className="bg-white shadow-sm p-4 border-b border-red-100">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800">Course Recommendation Quiz</h1>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">Course Recommendation Quiz</h1>
             <span className="text-sm text-gray-600">
               Question {currentQuestion + 1} of {quizData.length}
             </span>
@@ -386,7 +353,7 @@ export default function CourseQuiz() {
           
           <div className="w-full bg-gray-200 rounded-full h-3">
             <div 
-              className="bg-gradient-to-r from-indigo-500 to-purple-600 h-3 rounded-full transition-all duration-500"
+              className="bg-red-600 h-3 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -396,12 +363,12 @@ export default function CourseQuiz() {
       {/* Question Content */}
       <div className="flex-1 flex items-center justify-center p-4">
         <div className={`max-w-3xl w-full transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0'}`}>
-          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
+          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-red-100">
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-xl md:text-2xl font-bold">{currentQuestion + 1}</span>
               </div>
-              <h2 className="text-xl md:text-3xl font-bold text-gray-800 mb-2">
+              <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2">
                 {question.question}
               </h2>
               {question.type === 'multi' && (
@@ -414,10 +381,10 @@ export default function CourseQuiz() {
                 <button
                   key={option.id}
                   onClick={() => handleOptionSelect(option.id)}
-                  className={`w-full p-4 md:p-6 rounded-2xl border-2 text-left transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg ${
+                  className={`w-full p-4 md:p-6 rounded-2xl border-2 text-left transition-all duration-300 hover:shadow-lg ${
                     selectedOptions.includes(option.id)
-                      ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-transparent shadow-lg'
-                      : 'border-gray-200 hover:border-indigo-300 bg-white'
+                      ? 'bg-red-600 text-white border-red-600 shadow-lg'
+                      : 'border-gray-200 hover:border-red-300 bg-white'
                   }`}
                 >
                   <div className="flex items-center">
@@ -427,7 +394,7 @@ export default function CourseQuiz() {
                         : 'border-gray-300'
                     }`}>
                       {selectedOptions.includes(option.id) && (
-                        <div className="w-3 h-3 bg-indigo-600 rounded-full"></div>
+                        <div className="w-3 h-3 bg-red-600 rounded-full"></div>
                       )}
                     </div>
                     <span className="text-base md:text-lg font-medium">{option.text}</span>
@@ -442,7 +409,7 @@ export default function CourseQuiz() {
                 disabled={selectedOptions.length === 0}
                 className={`px-8 md:px-12 py-3 md:py-4 rounded-2xl font-semibold text-base md:text-lg transition-all duration-300 flex items-center justify-center mx-auto ${
                   selectedOptions.length > 0
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 shadow-lg'
+                    ? 'bg-red-600 text-white hover:bg-red-700 transform hover:scale-105 shadow-lg'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >

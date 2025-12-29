@@ -1,15 +1,17 @@
 import "@/styles/globals.css";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ChatAISection from "@/components/ChatAISection";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <div className="w-full min-w-full overflow-clip ">
       <Navbar />
-      <Component {...pageProps} />
+
+      <main className="w-full min-w-full">
+        <Component {...pageProps} />
+      </main>
+
       <Footer />
-      <ChatAISection/>
-    </>
+    </div>
   );
 }

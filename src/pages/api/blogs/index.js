@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // Check if cache is valid
     const now = Date.now();
     if (cache.data && cache.timestamp && (now - cache.timestamp < cache.ttl)) {
-      console.log('✅ Returning cached data');
+      
       return res.status(200).json({
         success: true,
         data: cache.data,
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     }
 
     // Fetch from Google Sheets
-    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
+    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL_Blog;
     
     if (!GOOGLE_SCRIPT_URL) {
       return res.status(500).json({
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log('🔄 Fetching fresh data from Google Sheets...');
+    
     
     const response = await axios.get(GOOGLE_SCRIPT_URL, {
       timeout: 10000
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
       cache.data = response.data.data;
       cache.timestamp = now;
       
-      console.log('✅ Data fetched and cached successfully');
+      
       
       return res.status(200).json({
         success: true,

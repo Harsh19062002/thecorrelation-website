@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Users, Shield, Clock, Home, ArrowRight, X } from 'lucide-react';
+import Head from "next/head";
 
 export default function SophosCareerPage() {
   // Sample job positions data
@@ -127,11 +128,11 @@ export default function SophosCareerPage() {
 
   // Custom button component
   const Button = ({ children, className = '', onClick, type = 'button', variant = 'default' }) => {
-    const baseClasses = 'px-4 py-2 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+    const baseClasses = 'px-4 py-2 rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2';
     const variantClasses = {
-      default: 'bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-500',
-      outline: 'bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
-      ghost: 'bg-transparent text-orange-500 hover:bg-orange-50 focus:ring-orange-500'
+      default: 'bg-red-600 text-white hover:shadow-xl focus:ring-red-500',
+      outline: 'bg-transparent border border-gray-300 text-gray-700 hover:border-red-600 hover:shadow-md focus:ring-red-500',
+      ghost: 'bg-transparent text-red-600 hover:bg-red-50 focus:ring-red-500'
     };
     
     return (
@@ -148,7 +149,7 @@ export default function SophosCareerPage() {
   // Custom card component
   const Card = ({ children, className = '' }) => {
     return (
-      <div className={`bg-white rounded-lg shadow-sm overflow-hidden ${className}`}>
+      <div className={`bg-white rounded-lg shadow-lg border border-red-100 overflow-hidden ${className}`}>
         {children}
       </div>
     );
@@ -164,7 +165,7 @@ export default function SophosCareerPage() {
         value={value}
         onChange={onChange}
         required={required}
-        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${className}`}
+        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-red-600 focus:ring-red-600 ${className}`}
         {...props}
       />
     );
@@ -180,7 +181,7 @@ export default function SophosCareerPage() {
         onChange={onChange}
         required={required}
         rows={rows}
-        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${className}`}
+        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-red-600 focus:ring-red-600 ${className}`}
       />
     );
   };
@@ -195,26 +196,26 @@ export default function SophosCareerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent">
-            Build Your Future With Sophos
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            Build Your Future With <span className="text-red-600">Sophos</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Join our team of innovators and grow your career with exciting opportunities in technology and business.
           </p>
           <div className="flex justify-center gap-4">
             <Button 
-              className="bg-orange-500 hover:bg-orange-600 text-white"
+              className="bg-red-600 hover:shadow-xl text-white"
               onClick={scrollToPositions}
             >
               Explore Openings
             </Button>
             <Button 
               variant="outline" 
-              className="bg-gray-200 text-gray-800 hover:bg-gray-300"
+              className="bg-white text-gray-800 hover:border-red-600 hover:shadow-md"
               onClick={() => alert('This would navigate to the About page in a real application')}
             >
               Learn About Us
@@ -227,25 +228,31 @@ export default function SophosCareerPage() {
       <section className="py-16 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Sophos?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Sophos?</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We're more than just a workplace - we're a community of passionate professionals building the future together.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <Users className="w-12 h-12 mx-auto mb-4 text-orange-500" />
-              <h3 className="text-xl font-semibold text-black mb-2">Collaborative Culture</h3>
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-red-100 text-center hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-red-600 flex items-center justify-center">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Collaborative Culture</h3>
               <p className="text-gray-600">Work with talented professionals in a supportive environment.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <Shield className="w-12 h-12 mx-auto mb-4 text-orange-500" />
-              <h3 className="text-xl font-semibold text-black mb-2">Cutting-Edge Technology</h3>
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-red-100 text-center hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-red-600 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Cutting-Edge Technology</h3>
               <p className="text-gray-600">Work with the latest technologies and innovative solutions.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <Clock className="w-12 h-12 mx-auto mb-4 text-orange-500" />
-              <h3 className="text-xl font-semibold text-black mb-2">Flexible Work Options</h3>
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-red-100 text-center hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-red-600 flex items-center justify-center">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Flexible Work Options</h3>
               <p className="text-gray-600">Balance your work and personal life with our flexible policies.</p>
             </div>
           </div>
@@ -256,24 +263,24 @@ export default function SophosCareerPage() {
       <section id="positions" className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Current Openings</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Current Openings</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Browse our available positions and find the perfect fit for your skills.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {(showAllPositions ? jobPositions : jobPositions.slice(0, 2)).map((job) => (
-              <Card key={job.id} className="hover:shadow-lg transition-shadow">
+              <Card key={job.id} className="hover:shadow-xl transition-shadow">
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-2">{job.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
                   <div className="flex flex-wrap gap-4 mb-4">
-                    <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
+                    <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-sm border border-red-100">
                       {job.department}
                     </span>
                     <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                       {job.location}
                     </span>
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                    <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                       {job.type}
                     </span>
                   </div>
@@ -295,7 +302,7 @@ export default function SophosCareerPage() {
             <div className="text-center mt-8">
               <Button 
                 variant="ghost" 
-                className="text-orange-500 hover:text-orange-600"
+                className="text-red-600 hover:bg-red-50"
                 onClick={() => setShowAllPositions(true)}
               >
                 View All Positions
@@ -306,68 +313,68 @@ export default function SophosCareerPage() {
       </section>
 
       {/* Why Work at Sophos Section */}
-     <section className="py-16 px-4 bg-orange-50">
-  <div className="container mx-auto">
-    <div className="flex flex-col md:flex-row gap-12 items-center">
-      {/* Left Content */}
-      <div className="md:w-1/2 px-4 md:px-8">
-        <h2 className="text-3xl font-bold text-black mb-6">Our Culture & Values</h2>
-        <p className="text-lg text-gray-600 mb-6">
-          At Sophos, we believe in creating an environment where everyone can thrive. Our core values guide everything we do.
-        </p>
-        <div className="space-y-4">
-          <div className="flex items-start">
-            <span className="bg-orange-100 text-orange-800 rounded-full p-1 mr-3">✓</span>
-            <div>
-              <h3 className="font-semibold text-black">Innovation</h3>
-              <p className="text-gray-600">We encourage creative thinking and new ideas</p>
+      <section className="py-16 px-4 bg-gray-100">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+            {/* Left Content */}
+            <div className="md:w-1/2 px-4 md:px-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Culture & Values</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                At Sophos, we believe in creating an environment where everyone can thrive. Our core values guide everything we do.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <span className="bg-red-50 text-red-600 rounded-full p-1 mr-3 border border-red-100">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Innovation</h3>
+                    <p className="text-gray-600">We encourage creative thinking and new ideas</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="bg-red-50 text-red-600 rounded-full p-1 mr-3 border border-red-100">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Collaboration</h3>
+                    <p className="text-gray-600">Teamwork makes the dream work</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="bg-red-50 text-red-600 rounded-full p-1 mr-3 border border-red-100">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Growth</h3>
+                    <p className="text-gray-600">We invest in our people's development</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="flex items-start">
-            <span className="bg-orange-100 text-orange-800 rounded-full p-1 mr-3">✓</span>
-            <div>
-              <h3 className="font-semibold text-black">Collaboration</h3>
-              <p className="text-gray-600">Teamwork makes the dream work</p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <span className="bg-orange-100 text-orange-800 rounded-full p-1 mr-3">✓</span>
-            <div>
-              <h3 className="font-semibold text-black">Growth</h3>
-              <p className="text-gray-600">We invest in our people's development</p>
+
+            {/* Right Image */}
+            <div className="md:w-1/2 px-4 md:px-8">
+              <img
+                src="/Dummy.png"
+                alt="Our Culture"
+                className="w-full h-auto rounded-xl shadow-lg object-cover border border-red-100"
+              />
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Right Image */}
-      <div className="md:w-1/2 px-4 md:px-8">
-        <img
-          src="/Dummy.png"
-          alt="Our Culture"
-          className="w-full h-auto rounded-xl shadow-lg object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Job Details Modal */}
       {selectedJob && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-red-100">
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold">{selectedJob.title}</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">{selectedJob.title}</h2>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
+                    <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-sm border border-red-100">
                       {selectedJob.department}
                     </span>
                     <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                       {selectedJob.location}
                     </span>
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                    <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                       {selectedJob.type}
                     </span>
                   </div>
@@ -382,12 +389,12 @@ export default function SophosCareerPage() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Job Description</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Job Description</h3>
                   <p className="text-gray-700">{selectedJob.description}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Responsibilities</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Responsibilities</h3>
                   <ul className="list-disc pl-5 space-y-2 text-gray-700">
                     {selectedJob.responsibilities.map((item, index) => (
                       <li key={index}>{item}</li>
@@ -396,7 +403,7 @@ export default function SophosCareerPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Requirements</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Requirements</h3>
                   <ul className="list-disc pl-5 space-y-2 text-gray-700">
                     {selectedJob.requirements.map((item, index) => (
                       <li key={index}>{item}</li>
@@ -405,9 +412,9 @@ export default function SophosCareerPage() {
                 </div>
 
                 <div className="border-t pt-6">
-                  <h3 className="text-xl font-semibold mb-4">Apply for this position</h3>
-                  <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Apply for this position</h3>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="name">Full Name</Label>
                         <Input
@@ -452,7 +459,7 @@ export default function SophosCareerPage() {
                         />
                       </div>
                     </div>
-                    <div className="mb-4">
+                    <div>
                       <Label htmlFor="coverLetter">Cover Letter</Label>
                       <Textarea
                         id="coverLetter"
@@ -470,19 +477,17 @@ export default function SophosCareerPage() {
                       >
                         Cancel
                       </Button>
-                      <Button type="submit" className="bg-orange-500 hover:bg-orange-600">
+                      <Button type="button" onClick={handleSubmit} className="bg-red-600 hover:shadow-xl">
                         Submit Application
                       </Button>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       )}
-
-   
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // Check cache
     const now = Date.now();
     if (cache.data && cache.timestamp && (now - cache.timestamp < cache.ttl)) {
-      console.log('✅ Returning cached categories');
+      
       return res.status(200).json({
         success: true,
         data: cache.data,
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log('🔄 Fetching categories from Google Sheets...');
+   
     
     const response = await axios.get(GOOGLE_SCRIPT_URL, {
       timeout: 10000
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       cache.data = categories;
       cache.timestamp = now;
       
-      console.log('✅ Categories fetched and cached:', categories);
+     
       
       return res.status(200).json({
         success: true,

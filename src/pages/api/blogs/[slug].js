@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     const cachedBlog = cache[slug];
     
     if (cachedBlog && (now - cachedBlog.timestamp < CACHE_TTL)) {
-      console.log(`✅ Returning cached blog: ${slug}`);
+      
       return res.status(200).json({
         success: true,
         data: cachedBlog.data,
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
     }
 
     // Fetch from Google Sheets
-    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
+    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL_Blog;
     
     if (!GOOGLE_SCRIPT_URL) {
       return res.status(500).json({
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log(`🔄 Fetching blog from Google Sheets: ${slug}`);
+    
     
     const response = await axios.get(GOOGLE_SCRIPT_URL, {
       params: { slug: slug },
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
         timestamp: now
       };
       
-      console.log(`✅ Blog fetched and cached: ${slug}`);
+      
       
       return res.status(200).json({
         success: true,

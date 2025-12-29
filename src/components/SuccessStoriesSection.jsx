@@ -71,38 +71,31 @@ const SuccessStoriesSection = () => {
               className="relative bg-black/20 backdrop-blur-lg rounded-xl p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             >
               {/* Hexagon Image */}
-              <div className="absolute -top-6 -left-6 w-24 h-24  ">
-                <div className="w-full h-full clip-hexagon overflow-hidden  border-black shadow-md">
-                  <Image
-                    src={story.image}
-                    alt={story.name}
-                    width={64}
-                    height={64}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              
 
               {/* Content */}
-              <div className="mt-6 ml-20">
-                <h3 className="text-lg font-bold text-white">{story.name}</h3>
+     <div className="mt-6 ml-20">
+  <h3 className="text-lg font-bold text-white">{story.name}</h3>
 
-                <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-white mt-1">
-                  <span className="text-white">{story.qualification}</span>
-                  <MoveRight className="w-4 h-4 text-white" />
-                  <span className="text-white">{story.position}</span>
-                </div>
+  <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-white mt-1">
+    <span>{story.qualification}</span>
+    <MoveRight className="w-4 h-4 text-white" />
+    <span>{story.position}</span>
+  </div>
 
-                <p className="text-sm text-white mt-1 ml-42">@ {story.company}</p>
+  {/* Company */}
+  <div className="mt-1 text-sm text-white font-medium">
+    @ {story.company}
+  </div>
 
-                <p className="text-sm text-white mt-3 leading-relaxed text-justify">
-                  {story.testimonial}
-                </p>
+  <p className="text-sm text-white mt-3 leading-relaxed text-justify">
+    {story.testimonial}
+  </p>
 
-                <div className="text-right text-lg font-extrabold text-white mt-3">
-                  {story.salary}
-                </div>
-              </div>
+  <div className="text-right text-lg font-extrabold text-white mt-3">
+    {story.salary}
+  </div>
+</div>
             </div>
           ))}
         </div>

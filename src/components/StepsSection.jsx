@@ -49,14 +49,14 @@ const StepsSection = () => {
 
   return (
     <div>
-      <section id="steps-journey" className="relative">
+      <section id="steps-journey" className="relative ">
         {/* Header */}
         <div className="bg-gray-100 p-8 flex items-center justify-center">
           <h1 className="text-4xl font-bold text-center">Your Journey With Us</h1>
         </div>
 
         {/* Steps */}
-        <div className="relative">
+        <div className="relative ">
           {steps.map((step, index) => (
             <div
               key={index}
